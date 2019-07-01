@@ -5,8 +5,8 @@ start();
 async function start(){
   
   const data = await requestResources();
-  let images = [""];
-  let authors = [""];
+  let images = [];
+  let authors = [];
   //
    // console.log(data);
    data.forEach(function(item){
@@ -17,7 +17,7 @@ async function start(){
      
     });
 
-  console.log(images);
+  console.log(authors);
 
   for (let j = 0; j < images.length; j++) {
 
@@ -47,11 +47,19 @@ async function requestResources() {
   const data = await (
     fetch('https://picsum.photos/v2/list?page=2&limit=20')
     .then(response => response.json())
-    .then(data => data.map(photo => ([photo.download_url,photo.author])))
+    .then(data => data.map(function(photo){
+                           
+      const url = JSON.stringify(photo.download_url);  
+      url = url.replace(/\"([^(\")"]+)\":/g,"$1:"); 
+      
+      return([url,photo.author]);
+      
+      
+    }))
   
   );
   
-  // console.log(data);
+  console.log(data);
   return data;
 }
 
@@ -59,7 +67,7 @@ async function main(evt) {
   "use strict";
   evt.preventDefault();
   
-  console.log(evt.target);
+  // console.log(evt.target.value);
   
   const regex = RegExp(`^${evt.target.value}`, 'i');
 
