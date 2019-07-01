@@ -18,6 +18,7 @@ async function start(){
     node.className += "main__list-item";
 
     a.href =  "#";
+    a.addEventListener("click", main, false);
     i.src = images[j];
     p.innerText = authors[j];
   
@@ -25,32 +26,21 @@ async function start(){
     a.appendChild(p);
     node.appendChild(a);
     document.getElementById("main__list").appendChild(node);
-    a.addEventListener("click",function(){main(event)});
 
   }
   
 }
 
 
-async function requestImages() {
+async function requestResources() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=2&limit=100')
+    fetch('https://picsum.photos/v2/list?page=2&limit=20')
     .then(response => response.json())
     .then(data => data.map(photo => photo.download_url))
+    .then(data => data.map(photo => photo.authors))
   );
-
-  return data;
-}
-
-async function requestAuthorNames() {
-
-  const data = await (
-    fetch('https://picsum.photos/v2/list?page=2&limit=100')
-    .then(response => response.json())
-    .then(data => data.map(photo => photo.author))
-  );
-
+  
   return data;
 }
 
@@ -58,7 +48,7 @@ async function main(evt) {
   "use strict";
   evt.preventDefault();
   
-  console.log(evt.target.value);
+  console.log(evt.target);
   
   const regex = RegExp(`^${evt.target.value}`, 'i');
 
