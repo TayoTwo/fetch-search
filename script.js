@@ -37,7 +37,7 @@ async function main(evt) {
     var node = document.createElement("li");   
     var i = document.createElement("img");
     var p = document.createElement("p");
-    node.className += "main_list-item";
+    node.className += "main__list-item";
    
     i.src =  images[j];
     p.innerText = authors[j];
@@ -57,6 +57,7 @@ async function main(evt) {
       item.style.display = `${item.innerText}`
         .split(/[^a-z]/ig)
         .some(w => regex.test(w)) ? "" : "none"; 
+      
     });
   
 }

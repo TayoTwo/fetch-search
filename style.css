@@ -34,14 +34,10 @@ body {
   
 }
 
-.main__inner-container {
-  
-}
-
 .main__list-item {
   
-  fposition: relative;
-  width: calc((100% - 15px) / 2);
+  flex: 1;
+  padding: 10px;
   
 }
 
