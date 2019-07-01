@@ -37,9 +37,9 @@ async function main(evt) {
     var node = document.createElement("li");   
     var i = document.createElement("img");
     var p = document.createElement("p");
+    node.class = "main_list-item";
    
     i.src =  images[j];
-    i.class = "main_list-item";
     p.innerText = authors[j];
    
     node.appendChild(i);
