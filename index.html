@@ -9,19 +9,52 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
     
-    <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
   </head>  
   <body>
-    <h1>Hi there!</h1>
     
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
+    <section class="search">
+      
+      <div class="search-container">
+        
+        <div class="search">
+          
+          <form action="/" method="get" class="search__form" role="search">
+            <label for="search-input" class="search__label">
+              <input type="text" name="q" class="search__input" id="search-input" placeholder="Explore the Collection" role="searchbox">
+            </label>
+            <div class="search__submit sr-only">
+              <button type="submit" class="search__submit-btn" tabindex="-1">Search</button>
+            </div>
+          </form>
+          
+        </div>
+        
+      </div>
+      
+    </section>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+    <main class="main">
+      
+      <div class="main__inner-container">
+        
+        <div class="main__inner">
+          
+          <div class="main__list-container">
+            
+            <ul class="main__list">
+              
+              <li class="main__list-item">ABSTRACT</li>
+              
+            </ul>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </main>
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
   </body>
 </html>

@@ -1,5 +1,13 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
+const ulist = document.getElementById('main__list');
 
-// prints "hi" in the browser's dev tools console
-console.log('hi');
+function main(evt) {
+  "use strict";
+
+  const regex = RegExp(`^${evt.target.value}`, 'i');
+  
+  const listItems = [...ulist.getElementsByTagName('li')]
+    .forEach(item => {
+      item.style.display = `${item.innerText}`.split(/[^a-z]/ig).some(w => regex.test(w)) ? "" : "none"; 
+    });
+  
+}

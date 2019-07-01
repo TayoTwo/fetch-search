@@ -9,3 +9,13 @@ h1 {
   font-style: italic;
   color: #373fff;
 }
+
+.sr-only {
+  position: absolute;
+  left: -99999px;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 1px 1px 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+}
