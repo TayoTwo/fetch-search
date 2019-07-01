@@ -58,7 +58,7 @@ async function requestResources() {
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url} = photo;
-      download_url = download_url.replace(/(\/+)$/, 'world');
+      download_url = download_url.replace(/(\/+)$/, '');
       
                            
 //       let url = JSON.stringify(photo.download_url).replace(/\\"/g, '"');
