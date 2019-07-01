@@ -4,10 +4,11 @@ start();
 
 async function start(){
   
-    const images = await requestImages();
-  const authors = await requestAuthorNames();
+  const data = requestResources();
+  const images = await data.then(data => data.map(photo => photo.download_url));
+  const authors = await data.then(data => data.map(photo => photo.author));
 
-  console.log(images.length);
+  // console.log(images);
 
   for (let j = 0; j < images.length; j++) {
 
@@ -37,10 +38,10 @@ async function requestResources() {
   const data = await (
     fetch('https://picsum.photos/v2/list?page=2&limit=20')
     .then(response => response.json())
-    .then(data => data.map(photo => photo.download_url))
-    .then(data => data.map(photo => photo.authors))
+    
   );
   
+  console.log(data);
   return data;
 }
 
