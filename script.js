@@ -54,12 +54,12 @@ async function changeSize(url){
 async function start() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=2&limit=2')
+    fetch('https://picsum.photos/v2/list?page=2&limit=20')
     .then(response => response.json())
     .then(data => data.map(function(photo){
-      let {author, download_url} = photo;
+      let {author, download_url: url} = photo;
       
-      download_url = download_url.replace(/(\/+)$/, '')
+      url = url.replace(/(\/+)$/, '')
         .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
           const $max = Math.max($width, $height);
           const max = Math.min($max, 1024);
@@ -72,9 +72,10 @@ async function start() {
                            
 //       let url = JSON.stringify(photo.download_url).replace(/\\"/g, '"');
 //       changeSize(url)
+        
+      loadPhoto({url, author});
       
-//       return([url,photo.author]);
-      
+      return([url,photo.author]);
       
     }))
   
@@ -84,7 +85,7 @@ async function start() {
   return data;
 }
 
-async function main(evt) {
+function main(evt) {
   "use strict";
   evt.preventDefault();
   
