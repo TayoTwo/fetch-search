@@ -17,8 +17,8 @@ async function start(){
     var p = document.createElement("p");
     node.className += "main__list-item";
 
-    a.href =  "/";
-    a.onclick = 
+    a.href =  "#";
+    a.addEventListener("click",main(e));
     i.src = images[j];
     p.innerText = authors[j];
   
@@ -31,11 +31,6 @@ async function start(){
   
 }
 
-function onClick(){
-  
-  main("",true,value);
-  
-}
 
 async function requestImages() {
 
@@ -59,35 +54,19 @@ async function requestAuthorNames() {
   return data;
 }
 
-async function main(evt,onclick,value) {
+async function main(evt) {
   "use strict";
-  
-  if(!onclick){
+  evt.preventDefault();
 
-    const regex = RegExp(`^${evt.target.value}`, 'i');
+  const regex = RegExp(`^${evt.target.value}`, 'i');
 
-    const listItems = [...ulist.getElementsByTagName('li')]
-      .forEach(item => {
+  const listItems = [...ulist.getElementsByTagName('li')]
+    .forEach(item => {
 
-        item.style.display = `${item.innerText}`
-          .split(/[^a-z]/ig)
-          .some(w => regex.test(w)) ? "" : "none";
+      item.style.display = `${item.innerText}`
+        .split(/[^a-z]/ig)
+        .some(w => regex.test(w)) ? "" : "none";
 
-      });
-
- } else {
-
-    const regex = RegExp(`^${value}`, 'i');
-
-    const listItems = [...ulist.getElementsByTagName('li')]
-      .forEach(item => {
-
-        item.style.display = `${item.innerText}`
-          .split(/[^a-z]/ig)
-          .some(w => regex.test(w)) ? "" : "none";
-
-      });
-
-  } 
+    });
 
 }
