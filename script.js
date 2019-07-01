@@ -18,7 +18,6 @@ async function start(){
     node.className += "main__list-item";
 
     a.href =  "#";
-    a.addEventListener("click",main);
     i.src = images[j];
     p.innerText = authors[j];
   
@@ -26,6 +25,7 @@ async function start(){
     a.appendChild(p);
     node.appendChild(a);
     document.getElementById("main__list").appendChild(node);
+    a.addEventListener("click",function(){main(event)});
 
   }
   
