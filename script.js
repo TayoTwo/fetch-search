@@ -16,7 +16,22 @@ async function main(evt) {
   "use strict";
   
   const images = await requestImages();
-
+  
+  images.forEach(img => {
+    
+    var node = document.createElement("li");   
+    var i = document.createElement("img")
+    i.src =  img;
+    node.appendChild(i);
+    document.getElementById("main__list").appendChild(node);
+    
+  }
+  
+    
+    
+  );
+    
+    
   const regex = RegExp(`^${evt.target.value}`, 'i');
   
   const listItems = [...ulist.getElementsByTagName('li')]
