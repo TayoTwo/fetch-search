@@ -18,7 +18,7 @@ async function start(){
     node.className += "main__list-item";
 
     a.href =  "#";
-    a.addEventListener("click",main(e));
+    a.addEventListener("click",main);
     i.src = images[j];
     p.innerText = authors[j];
   
@@ -57,7 +57,9 @@ async function requestAuthorNames() {
 async function main(evt) {
   "use strict";
   evt.preventDefault();
-
+  
+  console.log(evt.target.value);
+  
   const regex = RegExp(`^${evt.target.value}`, 'i');
 
   const listItems = [...ulist.getElementsByTagName('li')]
