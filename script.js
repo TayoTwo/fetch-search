@@ -41,6 +41,13 @@ async function start(){
   
 }
 
+async function changeSize(url){
+  
+  const fixedUrl = url.split('/');
+  let width = fixedUrl[fixedUrl.length - 1];
+  let height = fixedUrl[fixedUrl.length];
+}
+
 
 async function requestResources() {
 
@@ -49,8 +56,7 @@ async function requestResources() {
     .then(response => response.json())
     .then(data => data.map(function(photo){
                            
-      const url = JSON.stringify(photo.download_url);  
-      url = url.replace(/\"([^(\")"]+)\":/g,"$1:"); 
+      let url = JSON.stringify(photo.download_url);
       
       return([url,photo.author]);
       
