@@ -45,8 +45,8 @@ body {
   
 }
 
-.content__item-image img {
-  max-width: 100%;
+.main__list-item img {
+  max-width: 500px;
   height: auto;
 }
 
