@@ -18,6 +18,7 @@ async function start(){
     node.className += "main__list-item";
 
     a.href =  "/";
+    a.onclick = 
     i.src = images[j];
     p.innerText = authors[j];
   
@@ -30,6 +31,11 @@ async function start(){
   
 }
 
+function onClick(){
+  
+  main("",true,value);
+  
+}
 
 async function requestImages() {
 
@@ -53,18 +59,35 @@ async function requestAuthorNames() {
   return data;
 }
 
-async function main(evt) {
+async function main(evt,onclick,value) {
   "use strict";
+  
+  if(!onclick){
 
-  const regex = RegExp(`^${evt.target.value}`, 'i');
+    const regex = RegExp(`^${evt.target.value}`, 'i');
 
-  const listItems = [...ulist.getElementsByTagName('li')]
-    .forEach(item => {
+    const listItems = [...ulist.getElementsByTagName('li')]
+      .forEach(item => {
 
-      item.style.display = `${item.innerText}`
-        .split(/[^a-z]/ig)
-        .some(w => regex.test(w)) ? "" : "none";
+        item.style.display = `${item.innerText}`
+          .split(/[^a-z]/ig)
+          .some(w => regex.test(w)) ? "" : "none";
 
-    });
+      });
+
+ } else {
+
+    const regex = RegExp(`^${value}`, 'i');
+
+    const listItems = [...ulist.getElementsByTagName('li')]
+      .forEach(item => {
+
+        item.style.display = `${item.innerText}`
+          .split(/[^a-z]/ig)
+          .some(w => regex.test(w)) ? "" : "none";
+
+      });
+
+  } 
 
 }
