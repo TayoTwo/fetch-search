@@ -44,21 +44,27 @@ async function start(){
 async function changeSize(url){
   
   const fixedUrl = url.split('/');
-  let width = fixedUrl[fixedUrl.length - 1];
-  let height = fixedUrl[fixedUrl.length];
+  let width = fixedUrl[fixedUrl.length - 2];
+  let height = fixedUrl[fixedUrl.length -1];
+  
+  console.log(width + " " + height);
 }
 
 
 async function requestResources() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=2&limit=20')
+    fetch('https://picsum.photos/v2/list?page=2&limit=2')
     .then(response => response.json())
     .then(data => data.map(function(photo){
-                           
-      let url = JSON.stringify(photo.download_url);
+      let {author, download_url} = photo;
+      download_url = download_url.replace(/(\/+)$/, 'world');
       
-      return([url,photo.author]);
+                           
+//       let url = JSON.stringify(photo.download_url).replace(/\\"/g, '"');
+//       changeSize(url)
+      
+//       return([url,photo.author]);
       
       
     }))
