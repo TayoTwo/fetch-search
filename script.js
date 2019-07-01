@@ -3,10 +3,10 @@ const ulist = document.getElementById('main__list');
 function addItems(){
   
   const data = fetch('https://picsum.photos/v2/list?page=2&limit=100')
-  .thenresponse => response.json()
-  );
+  .then(response => response.json())
+  .then(data => data.downaload_url);
   
-  console.log(data.download_url);
+  console.log(data);
   
 }
 
