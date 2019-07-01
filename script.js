@@ -1,6 +1,35 @@
 const ulist = document.getElementById('main__list');
 
-main();
+start();
+
+async function start(){
+  
+    const images = await requestImages();
+  const authors = await requestAuthorNames();
+
+  console.log(images.length);
+
+  for (let j = 0; j < images.length; j++) {
+
+    var node = document.createElement("li");
+    var a = document.createElement('a');
+    var i = document.createElement("img");
+    var p = document.createElement("p");
+    node.className += "main__list-item";
+
+    a.href =  "/";
+    i.src = images[j];
+    p.innerText = authors[j];
+  
+    a.appendChild(i);
+    a.appendChild(p);
+    node.appendChild(a);
+    document.getElementById("main__list").appendChild(node);
+
+  }
+  
+}
+
 
 async function requestImages() {
 
@@ -26,30 +55,6 @@ async function requestAuthorNames() {
 
 async function main(evt) {
   "use strict";
-
-  const images = await requestImages();
-  const authors = await requestAuthorNames();
-
-  console.log(images.length);
-
-  for (let j = 0; j < images.length; j++) {
-
-    var node = document.createElement("li");
-    var a = document.createElement('a');
-    var i = document.createElement("img");
-    var p = document.createElement("p");
-    node.className += "main__list-item";
-
-    a.href =  "/";
-    i.src = images[j];
-    p.innerText = authors[j];
-  
-    a.appendChild(i);
-    a.appendChild(p);
-    node.appendChild(a);
-    document.getElementById("main__list").appendChild(node);
-
-  }
 
   const regex = RegExp(`^${evt.target.value}`, 'i');
 
