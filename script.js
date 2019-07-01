@@ -1,19 +1,21 @@
 const ulist = document.getElementById('main__list');
 
-function addItems(){
+async function requestImages(){
   
-  const data = fetch('https://picsum.photos/v2/list?page=2&limit=100')
-  .then(response => response.json())
-  .then(data => data.downaload_url);
+  const data = await (
+    fetch('https://picsum.photos/v2/list?page=2&limit=100')
+      .then(response => response.json())
+      .then(data => data.map(photo => photo.download_url))
+  );
   
   console.log(data);
-  
+  return data;
 }
 
-function main(evt) {
+async function main(evt) {
   "use strict";
   
-  addItems();
+  const images = await requestImages();
 
   const regex = RegExp(`^${evt.target.value}`, 'i');
   
