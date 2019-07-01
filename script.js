@@ -2,24 +2,24 @@ const ulist = document.getElementById('main__list');
 
 start();
 
-async function start(){
+function loadPhoto({url, author} = {}){
   
-  const data = await requestResources();
-  let images = [];
-  let authors = [];
-  //
-   // console.log(data);
-   data.forEach(function(item){
+//   const data = await requestResources();
+//   let images = [];
+//   let authors = [];
+//   //
+//    // console.log(data);
+//    data.forEach(function(item){
      
-      // console.log(item);
-      images.push(item[0]);
-      authors.push(item[1]);
+//       // console.log(item);
+//       images.push(item[0]);
+//       authors.push(item[1]);
      
-    });
+//     });
 
-  console.log(authors);
+//   console.log(authors);
 
-  for (let j = 0; j < images.length; j++) {
+  // for (let j = 0; j < images.length; j++) {
 
     var node = document.createElement("li");
     var a = document.createElement('a');
@@ -29,15 +29,15 @@ async function start(){
 
     a.href =  "#";
     a.addEventListener("click", main, false);
-    i.src = images[j];
-    p.innerText = authors[j];
+    i.src = url;
+    p.innerText = author;
   
     a.appendChild(i);
     a.appendChild(p);
     node.appendChild(a);
     document.getElementById("main__list").appendChild(node);
 
-  }
+  // }
   
 }
 
@@ -51,7 +51,7 @@ async function changeSize(url){
 }
 
 
-async function requestResources() {
+async function start() {
 
   const data = await (
     fetch('https://picsum.photos/v2/list?page=2&limit=2')
@@ -64,7 +64,9 @@ async function requestResources() {
           const $max = Math.max($width, $height);
           const max = Math.min($max, 1024);
         
-          $width = [$width, $]
+          [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
+        
+          return `${$width}/${$height}`;
         });
       
                            
