@@ -4,15 +4,18 @@ start();
 
 async function start(){
   
-  const data = requestResources();
-  const images = [""];
-  const authors = [""];
-  
-  for(){
-   
-    wait data[][0];
-    
-  }
+  const data = await requestResources();
+  let images = [""];
+  let authors = [""];
+  //
+   // console.log(data);
+   data.forEach(function(item){
+     
+      // console.log(item);
+      images.push(item[0]);
+      authors.push(item[1]);
+     
+    });
 
   console.log(images);
 
@@ -48,7 +51,7 @@ async function requestResources() {
   
   );
   
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
