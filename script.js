@@ -58,7 +58,14 @@ async function requestResources() {
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url} = photo;
-      download_url = download_url.replace(/(\/+)$/, '');
+      
+      download_url = download_url.replace(/(\/+)$/, '')
+        .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
+          const $max = Math.max($width, $height);
+          const max = Math.min($max, 1024);
+        
+          $width = [$width, $]
+        });
       
                            
 //       let url = JSON.stringify(photo.download_url).replace(/\\"/g, '"');
