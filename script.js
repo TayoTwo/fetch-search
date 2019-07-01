@@ -10,7 +10,6 @@ async function requestImages() {
     .then(data => data.map(photo => photo.download_url))
   );
 
-  console.log(data);
   return data;
 }
 
@@ -22,7 +21,6 @@ async function requestAuthorNames() {
     .then(data => data.map(photo => photo.author))
   );
 
-  console.log(data);
   return data;
 }
 
