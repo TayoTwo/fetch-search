@@ -37,13 +37,14 @@ async function main(evt) {
   for (let j = 0; j < images.length; j++) {
 
     var node = document.createElement("li");
+    var a = document.createElement('a');
     var i = document.createElement("img");
     var p = document.createElement("p");
     node.className += "main__list-item";
 
     i.src = images[j];
     p.innerText = authors[j];
-
+  
     node.appendChild(i);
     node.appendChild(p);
     document.getElementById("main__list").appendChild(node);
