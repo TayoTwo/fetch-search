@@ -1,13 +1,15 @@
 /* CSS files add styling rules to your content */
 
-body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+html {
+  font-size: 16px;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+body {
+  
+  background: #ffffff;
+  font-family: "Roboto", sans-serif;
+  margin: 2em;
+  
 }
 
 .sr-only {
@@ -19,3 +21,13 @@ h1 {
   clip-path: inset(50%);
   overflow: hidden;
 }
+
+.main__list {
+  margin: 1rem auto;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+

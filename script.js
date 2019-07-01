@@ -7,7 +7,9 @@ function main(evt) {
   
   const listItems = [...ulist.getElementsByTagName('li')]
     .forEach(item => {
-      item.style.display = `${item.innerText}`.split(/[^a-z]/ig).some(w => regex.test(w)) ? "" : "none"; 
+      item.style.display = `${item.innerText}`
+        .split(/[^a-z]/ig)
+        .some(w => regex.test(w)) ? "" : "none"; 
     });
   
 }
