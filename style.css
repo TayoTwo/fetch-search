@@ -32,11 +32,11 @@ body {
 .main__list {
   
   margin: auto 1em;
-  padding:0;
+  padding: 0px;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   
 }
 
@@ -47,7 +47,7 @@ body {
   
 }
 
-.main__list-item img,p {
+.main__list-item a,img,p {
   
   text-align: center;
   width: 500px;

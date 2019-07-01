@@ -42,12 +42,13 @@ async function main(evt) {
     var p = document.createElement("p");
     node.className += "main__list-item";
 
+    a.href =  "/";
     i.src = images[j];
     p.innerText = authors[j];
   
-    node.appendChild(i);
-    node.appendChild(p);
-    document.getElementById("main__list").appendChild(node);
+    a.appendChild(i);
+    a.appendChild(p);
+    document.getElementById("main__list").appendChild(a);
 
   }
 
