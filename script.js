@@ -48,7 +48,8 @@ async function main(evt) {
   
     a.appendChild(i);
     a.appendChild(p);
-    document.getElementById("main__list").appendChild(a);
+    node.appendChild(a);
+    document.getElementById("main__list").appendChild(node);
 
   }
 
