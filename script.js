@@ -14,7 +14,7 @@ async function start() {
       url = url.replace(/(\/+)$/, '')
         .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
           const $max = Math.max($width, $height);
-          const max = Math.min($max, 1080);
+          const max = Math.min($max, 1024);
         
           [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
         
@@ -62,7 +62,7 @@ function sort(text){
     .forEach(item => {
 
       item.style.display = `${item.innerText}`
-        .split(/[^a-z -]/ig)
+        .split(/[^a-z -[0-9]]/ig)
         .some(w => regex.test(w)) ? "" : "none";
 
     });
