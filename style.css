@@ -89,10 +89,15 @@ body {
   color: black;
   text-decoration: none;
   text-align: center;
-  object-fit: cover;
   width: 100%;
   height: auto;
   max-height: 30em;
 /*   max-width: 80em; */
+  
+}
+
+.main__list-item a {
+  
+  object-fit: contain;
   
 }
