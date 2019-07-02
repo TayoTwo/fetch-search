@@ -29,6 +29,12 @@ body {
   
 }
 
+.search__searchbox {
+  
+  margin: 1em;
+  
+}
+
 .main__list {
   
   padding: 0px;
