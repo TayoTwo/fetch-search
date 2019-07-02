@@ -23,13 +23,13 @@ body {
   overflow: hidden;
 }
 
-.search__input {
+.header__input {
   
   padding: 10px;
   
 }
 
-.search__searchbox {
+.header__searchbox {
   
   margin: 1em;
   
@@ -63,6 +63,5 @@ body {
   
   width: 100%;
   height: auto;
-  
   
 }
