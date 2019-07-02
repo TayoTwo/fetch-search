@@ -74,6 +74,9 @@ function onClick(e) {
   e.preventDefault();
   
   sort(e.target.parentNode.lastChild.innerText);
+  
+  console.log("Action after click");
+  setTimeout(function(){sort("")},5000);
 
 }
 
