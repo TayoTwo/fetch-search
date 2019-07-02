@@ -78,7 +78,7 @@ function onClick(e) {
 }
 
 function onKeyUp(e) {
-  "use strict";
+  
   e.preventDefault();
   
   sort(e.target.value);
