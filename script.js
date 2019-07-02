@@ -11,7 +11,7 @@ function loadPhoto({url, author} = {}){
     node.className += "main__list-item";
 
     a.href =  "#";
-    a.addEventListener("click", main, false);
+    a.addEventListener("click", onClick, false);
     i.src = url;
     p.innerText = author;
   
@@ -21,16 +21,6 @@ function loadPhoto({url, author} = {}){
     document.getElementById("main__list").appendChild(node);
 
 }
-
-async function changeSize(url){
-  
-  const fixedUrl = url.split('/');
-  let width = fixedUrl[fixedUrl.length - 2];
-  let height = fixedUrl[fixedUrl.length -1];
-  
-  console.log(width + " " + height);
-}
-
 
 async function start() {
 
@@ -61,6 +51,18 @@ async function start() {
   console.log(data);
   return data;
 }
+
+
+async function onClick(e) {
+  
+  e.preventDefault();
+  
+  var target = e.target.parentNode;
+  
+  console.log(target);
+  
+}
+
 
 function main(evt) {
   "use strict";
