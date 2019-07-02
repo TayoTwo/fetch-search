@@ -35,6 +35,19 @@ body {
   
 }
 
+.header__home-btn {
+  
+  margin: 1em;
+  
+}
+
+.header__container {
+  
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
 .main__list {
   
   padding: 0px;
