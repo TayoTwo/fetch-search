@@ -2,26 +2,6 @@ const ulist = document.getElementById('main__list');
 
 start();
 
-function loadPhoto({url, author} = {}){
-
-    var node = document.createElement("li");
-    var a = document.createElement('a');
-    var i = document.createElement("img");
-    var p = document.createElement("p");
-    node.className += "main__list-item";
-
-    a.href =  "#";
-    a.addEventListener("click", onClick, false);
-    i.src = url;
-    p.innerText = author;
-  
-    a.appendChild(i);
-    a.appendChild(p);
-    node.appendChild(a);
-    document.getElementById("main__list").appendChild(node);
-
-}
-
 async function start() {
 
   const data = await (
@@ -52,21 +32,23 @@ async function start() {
   return data;
 }
 
+function loadPhoto({url, author} = {}){
 
-function onClick(e) {
+    var node = document.createElement("li");
+    var a = document.createElement('a');
+    var i = document.createElement("img");
+    var p = document.createElement("p");
+    node.className += "main__list-item";
+
+    a.href =  "#";
+    a.addEventListener("click", onClick, false);
+    i.src = url;
+    p.innerText = author;
   
-  e.preventDefault();
-  
-  sort(e.target.parentNode.lastChild.innerText);
-
-}
-
-
-function onKeyUp(e) {
-  "use strict";
-  e.preventDefault();
-  
-  sort(e.target.value);
+    a.appendChild(i);
+    a.appendChild(p);
+    node.appendChild(a);
+    document.getElementById("main__list").appendChild(node);
 
 }
 
@@ -85,4 +67,20 @@ function sort(text){
 
     });
   
+}
+
+function onClick(e) {
+  
+  e.preventDefault();
+  
+  sort(e.target.parentNode.lastChild.innerText);
+
+}
+
+function onKeyUp(e) {
+  "use strict";
+  e.preventDefault();
+  
+  sort(e.target.value);
+
 }
