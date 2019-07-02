@@ -53,30 +53,36 @@ async function start() {
 }
 
 
-async function onClick(e) {
+function onClick(e) {
   
   e.preventDefault();
   
-  var target = e.target.parentNode;
-  
-  console.log(target);
-  
+  sort(e.target.parentNode.lastChild.innerText);
+
 }
 
 
-function main(evt) {
+function onKeyUp(e) {
   "use strict";
-  evt.preventDefault();
+  e.preventDefault();
   
-  const regex = RegExp(`^${evt.target.value}`, 'i');
+  sort(e.target.value);
 
+}
+
+function sort(text){
+  
+  console.log(text);
+  
+  const regex = RegExp(`^${text}`, 'i');
+  
   const listItems = [...ulist.getElementsByTagName('li')]
     .forEach(item => {
 
       item.style.display = `${item.innerText}`
-        .split(/[^a-z]/ig)
+        .split(/[^a-z ]/ig)
         .some(w => regex.test(w)) ? "" : "none";
 
     });
-
+  
 }
