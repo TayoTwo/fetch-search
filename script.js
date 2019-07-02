@@ -3,23 +3,6 @@ const ulist = document.getElementById('main__list');
 start();
 
 function loadPhoto({url, author} = {}){
-  
-//   const data = await requestResources();
-//   let images = [];
-//   let authors = [];
-//   //
-//    // console.log(data);
-//    data.forEach(function(item){
-     
-//       // console.log(item);
-//       images.push(item[0]);
-//       authors.push(item[1]);
-     
-//     });
-
-//   console.log(authors);
-
-  // for (let j = 0; j < images.length; j++) {
 
     var node = document.createElement("li");
     var a = document.createElement('a');
@@ -37,8 +20,6 @@ function loadPhoto({url, author} = {}){
     node.appendChild(a);
     document.getElementById("main__list").appendChild(node);
 
-  // }
-  
 }
 
 async function changeSize(url){
@@ -68,11 +49,7 @@ async function start() {
         
           return `${$width}/${$height}`;
         });
-      
-                           
-//       let url = JSON.stringify(photo.download_url).replace(/\\"/g, '"');
-//       changeSize(url)
-        
+
       loadPhoto({url, author});
       
       return([url,photo.author]);
@@ -88,8 +65,6 @@ async function start() {
 function main(evt) {
   "use strict";
   evt.preventDefault();
-  
-  // console.log(evt.target.value);
   
   const regex = RegExp(`^${evt.target.value}`, 'i');
 
