@@ -41,6 +41,20 @@ body {
   
 }
 
+.header__btn{
+  
+  font-size: 16px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  padding: 10px;
+  
+}
+
+
 .header__container {
   
   display: flex;

@@ -6,7 +6,7 @@ async function start() {
 
   console.log("Starting...");
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=1&limit=50')
+    fetch('https://picsum.photos/v2/list?page=5&limit=200')
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url: url} = photo;
@@ -14,7 +14,7 @@ async function start() {
       url = url.replace(/(\/+)$/, '')
         .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
           const $max = Math.max($width, $height);
-          const max = Math.min($max, 1024);
+          const max = Math.min($max, 1080);
         
           [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
         
@@ -62,7 +62,7 @@ function sort(text){
     .forEach(item => {
 
       item.style.display = `${item.innerText}`
-        .split(/[^a-z ]/ig)
+        .split(/[^a-z -]/ig)
         .some(w => regex.test(w)) ? "" : "none";
 
     });
@@ -74,9 +74,6 @@ function onClick(e) {
   e.preventDefault();
   
   sort(e.target.parentNode.lastChild.innerText);
-  
-  console.log("Action after click");
-  setTimeout(function(){sort("")},5000);
 
 }
 
