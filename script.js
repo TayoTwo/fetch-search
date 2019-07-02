@@ -25,7 +25,7 @@ function loadPhoto({url, author} = {}){
 async function start() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=2&limit=20')
+    fetch('https://picsum.photos/v2/list?page=1&limit=50')
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url: url} = photo;
