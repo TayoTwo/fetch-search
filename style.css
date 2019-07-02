@@ -76,9 +76,10 @@ body {
   
   
   flex: 0 0 auto;
-  margin: 1em;
   width: 30%;
-  height: 15em;
+  height: auto;
+  margin: 1em;
+/*   border: solid; */
   
   
 }
@@ -89,8 +90,9 @@ body {
   text-decoration: none;
   text-align: center;
   object-fit: cover;
-/*   height: auto; */
-  
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+  max-height: 30em;
+/*   max-width: 80em; */
   
 }
