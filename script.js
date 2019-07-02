@@ -4,6 +4,7 @@ start();
 
 async function start() {
 
+  console.log("Starting...");
   const data = await (
     fetch('https://picsum.photos/v2/list?page=1&limit=50')
     .then(response => response.json())
@@ -27,7 +28,6 @@ async function start() {
     }))
   
   );
-  
   console.log(data);
   return data;
 }
