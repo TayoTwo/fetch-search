@@ -48,11 +48,6 @@ body {
   
 }
 
-.header__photo-count-container {
-  
-  float: right;
-  
-}
 
 .header__photo-count,.header__btn{
   
@@ -66,6 +61,20 @@ body {
   
 }
 
+
+.header__searchbox{
+
+  flex: 1 1 auto;
+  
+}
+
+.header__photo-count-container {
+  
+
+  flex: 1 1 auto;
+  
+}
+
 .header__btn{
   
   font-size: 16px;
@@ -75,6 +84,7 @@ body {
   cursor:pointer;
   overflow: hidden;
   outline:none;
+  flex: 1 1 auto;
   
 }
 
@@ -82,8 +92,8 @@ body {
   
   width:100%;
   display: flex;
-  align-items: stretch; 
   flex-wrap: wrap;
+  justify-content: space-between;
   
 }
 
@@ -111,7 +121,7 @@ body {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   
 }
 
@@ -128,11 +138,13 @@ body {
 
 .main__list-item figure,img{
   
-  color: black;
+  color: white;
   text-decoration: none;
   text-align: center;
   width: 100%;
   margin:0;
+  background-color: #222;
+  
   
 }
 
