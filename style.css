@@ -30,13 +30,13 @@ body {
   position:fixed;
   top:0;
   z-index: 100;
+  
   background-color:white; 
   
 }
 
 .header__input {
   
-  flex: 5 1 auto;
   padding: 1em;
 
 }
@@ -58,16 +58,20 @@ body {
   overflow: hidden;
   outline:none;
   padding: 10px;
-  flex: 1 1 auto;
+  flex: auto;
   
 }
 
+.header__searchbox {
+  
+  flex: 5 1 auto;
+  
+}
 
 .header__inner {
   
   display: flex;
   flex-wrap: wrap;
-  
   
 }
 
