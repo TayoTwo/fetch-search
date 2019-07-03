@@ -143,7 +143,7 @@ body {
 /*   width: 100%; */
   
   max-width:60em;
-/*   max-height:45em; */
+  max-height:45em;
   
   margin: 0 auto;
 
@@ -159,7 +159,7 @@ body {
   min-height:11.25em;
   
   max-width:60em;
-/*   max-height:45em; */
+  max-height:45em;
   object-fit: cover;
   
 }

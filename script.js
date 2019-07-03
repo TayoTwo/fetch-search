@@ -11,10 +11,13 @@ setInterval(function(){
   
   for(var i =0;i < arr.length;i++){
     
+    var img = arr[i].getElementsByClassName("item-img")[0];
+    
     if(arr[i].style.display != "none"){
        
        count++;
-       arr[i].getElementsByClassName("item-img")[0].style.height =  arr[i].getElementsByClassName("item-img")[0].style.width * 0.75;
+      console.log(img);
+       img.setAttribute("height",img.getAttribute("width") * 0.75);
        
     }
     
