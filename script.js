@@ -4,10 +4,14 @@ start();
 
 setInterval(function(){
   
-  console.log(Array.prototype.slice.call(ulist));
-  document.getElementById("photo-count").innerText = Array.prototype.slice.call(ulist).length;
+  var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   
-},);
+  for()
+  
+  console.log(arr);
+  document.getElementById("photo-count").innerText = ;
+  
+},2000);
 
 async function start() {
 
