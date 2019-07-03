@@ -48,6 +48,25 @@ body {
   
 }
 
+.header__photo-count-container {
+  
+  float: right;
+  
+  
+}
+
+.header__photo-count {
+  
+  padding: 15px;
+  
+}
+
+.header__photo-count p {
+  
+  margin: 0;
+  
+}
+
 .header__btn{
   
   font-size: 16px;
