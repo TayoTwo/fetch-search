@@ -129,13 +129,12 @@ body {
   padding: 0.25em;
   width:16%;
   
-  
 /*   border: solid; */
 /*   position: absolute;  */
   
 }
 
-.main__list-item figure{
+.main__list-item > figure{
   
   
   color: white;
@@ -146,15 +145,10 @@ body {
   max-width:60em;
   max-height:45em;
   
-  margin:0;
+  margin: 0 auto;
+
   background-color: #222;
   
-  
-}
-
-.main__list-item > figure {
-  
-  margin: 0 auto;
   
 }
 
