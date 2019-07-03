@@ -42,6 +42,7 @@ function loadPhoto({url, author} = {}){
 
     a.href =  "#";
     a.addEventListener("click", onClick, false);
+    node.addEventListener("mouseover", onHover, false);
     i.src = url;
     p.innerText = author;
   
@@ -83,4 +84,11 @@ function onKeyUp(e) {
   
   sort(e.target.value);
 
+}
+
+
+function onHover(e){
+  
+  
+  
 }
