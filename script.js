@@ -2,6 +2,12 @@ const ulist = document.getElementById('main__list');
 
 start();
 
+setInterval(function(){
+  
+  
+  
+},1000);
+
 async function start() {
 
   console.log("Starting...");
