@@ -4,6 +4,13 @@ document.getElementById("header__search-input").focus();
 start();
 
 
+maintainAspectRatio(){
+  
+  img = document.getElementById();
+  
+  img.style.
+  
+}
 setInterval(function(){
   
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));

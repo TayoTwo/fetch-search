@@ -158,7 +158,8 @@ body {
   width:100%;
   min-height:11.25em;
   
-  max-height:100%;
+  max-width:60em;
+/*   max-height:45em; */
   object-fit: cover;
   
 }
