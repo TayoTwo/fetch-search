@@ -114,7 +114,7 @@ function onKeyUp(e) {
 function onHover(e){
   
   // console.log(e.target.parentNode.nodeName);
-  if(e.target.parentNode.nodeName == "A"){
+  if(e.target.parentNode.nodeName == "FIGURE"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
@@ -125,7 +125,7 @@ function onHover(e){
 
 function onExit(e){
   
-  if(e.target.parentNode.nodeName == "A"){
+  if(e.target.parentNode.nodeName == "FIGURE"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: none");
