@@ -39,6 +39,7 @@ body {
 .header__input {
   
   padding: 1em;
+  width: 100%;  
 
 }
 
@@ -64,19 +65,19 @@ body {
 
 .header__searchbox{
 
-  flex: 1 1 auto;
+  flex: 5 1 auto;
   
 }
 
 .header__photo-count-container {
   
-
   flex: 1 1 auto;
   
 }
 
 .header__btn{
   
+  flex: 1 1 auto;
   font-size: 16px;
   background-color: Transparent;
   background-repeat:no-repeat;
@@ -84,7 +85,6 @@ body {
   cursor:pointer;
   overflow: hidden;
   outline:none;
-  flex: 1 1 auto;
   
 }
 
