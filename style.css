@@ -26,14 +26,18 @@ body {
 
 .header {
   
+  display:block;
   position:fixed;
   top:0;
+  z-index: 100;
+  background-color:white; 
   
 }
 
 .header__input {
   
-  flex: 2 1 auto;
+  flex: 5 1 auto;
+  padding: 1em;
 
 }
 
@@ -54,6 +58,7 @@ body {
   overflow: hidden;
   outline:none;
   padding: 10px;
+  flex: 1 1 auto;
   
 }
 
@@ -62,6 +67,7 @@ body {
   
   display: flex;
   flex-wrap: wrap;
+  
   
 }
 
@@ -83,13 +89,11 @@ body {
 
 .main__list-item {
   
-  
   flex: 0 0 auto;
-  width: 16%;
+  width: 13em;
   height: auto;
 /*   margin: 1em; */
 /*   border: solid; */
-  
   
 }
 
@@ -106,6 +110,5 @@ body {
   
   object-fit: cover;
   height: 10em;
-  
   
 }
