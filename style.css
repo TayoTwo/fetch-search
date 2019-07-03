@@ -91,14 +91,13 @@ body {
   text-decoration: none;
   text-align: center;
   width: 100%;
-  height: auto;
-  max-height: 30em;
-/*   max-width: 80em; */
   
 }
 
-.main__list-item a {
+.main__list-item img {
   
-  object-fit: contain;
+  object-fit: cover;
+  height: 10%;
+  
   
 }
