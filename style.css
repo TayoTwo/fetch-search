@@ -125,29 +125,34 @@ body {
 
 .main__list-item {
   
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
+  flex: 1 1 auto;
   padding: 0.25em;
+  width:16%;
+  
 /*   border: solid; */
 /*   position: absolute;  */
   
 }
 
-.main__list-item figure,img{
+.main__list-item figure{
   
   color: white;
   text-decoration: none;
   text-align: center;
   width: 100%;
+  height: auto;
+  
   margin:0;
   background-color: #222;
   
   
 }
 
+
 .main__list-item img {
   
+  width:7.5em;
+  height:5em;
   object-fit: cover;
   
 }
