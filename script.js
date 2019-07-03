@@ -43,6 +43,7 @@ function loadPhoto({url, author} = {}){
     a.href =  "#";
     a.addEventListener("click", onClick, false);
     node.addEventListener("mouseover", onHover, false);
+  node.addEventListener("mouseout", onExit, false);
     i.src = url;
     p.innerText = author;
   
@@ -89,7 +90,16 @@ function onKeyUp(e) {
 
 function onHover(e){
   
+  if(e.target.)
+  
   console.log(e.target.parentNode.firstChild);
-  e.target.parentNode.firstChild.setAttribute("style", "drop-shadow(16px 16px 10px black);");
+  e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
+  
+}
+
+function onExit(e){
+  
+  console.log(e.target.parentNode.firstChild);
+  e.target.parentNode.setAttribute("style", "filter: none");
   
 }
