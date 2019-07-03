@@ -58,21 +58,21 @@ async function start() {
 function loadPhoto({url, author} = {}){
 
     var node = document.createElement("li");
-    var a = document.createElement('a');
+    var f = document.createElement('figure');
     var i = document.createElement("img");
-    var p = document.createElement("p");
+    var c = document.createElement("figcaption");
     node.className += "main__list-item";
 
-    a.href =  "#";
-    a.addEventListener("click", onClick, false);
+    f.href =  "#";
+    f.addEventListener("click", onClick, false);
     node.addEventListener("mouseover", onHover, false);
   node.addEventListener("mouseout", onExit, false);
     i.src = url;
-    p.innerText = author;
+    c.innerText = author;
   
-    a.appendChild(i);
-    a.appendChild(p);
-    node.appendChild(a);
+    f.appendChild(i);
+    f.appendChild(c);
+    node.appendChild(f);
     document.getElementById("main__list").appendChild(node);
 
 }

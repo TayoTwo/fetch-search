@@ -54,7 +54,7 @@ body {
   
 }
 
-.header__photo-count {
+.header__photo-count,.header__btn{
   
   padding: 15px;
   
@@ -75,7 +75,6 @@ body {
   cursor:pointer;
   overflow: hidden;
   outline:none;
-  padding: 10px;
   
 }
 
@@ -108,12 +107,12 @@ body {
   flex: 0 0 auto;
   width: 13em;
   height: auto;
-/*   margin: 1em; */
+  padding: 1em;
 /*   border: solid; */
   
 }
 
-.main__list-item a,img,p {
+.main__list-item figure {
   
   color: black;
   text-decoration: none;
