@@ -42,7 +42,7 @@ body {
 
 }
 
-.header__searchbox,.header__home-btn,.header__photo-count {
+.header__searchbox,.header__home-btn,.header__photo-count-container {
   
   margin: 1em;
   
@@ -51,7 +51,6 @@ body {
 .header__photo-count-container {
   
   float: right;
-  
   
 }
 
