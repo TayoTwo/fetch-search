@@ -16,7 +16,7 @@ setInterval(function(){
     if(arr[i].style.display != "none"){
        
        count++;
-      console.log(img);
+       // console.log();
        img.setAttribute("height",img.getAttribute("width") * 0.75);
        
     }
@@ -25,7 +25,7 @@ setInterval(function(){
   
   document.getElementById("photo-count").innerText = count;
   
-},250);
+},1000);
 
 async function start() {
 

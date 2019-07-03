@@ -119,13 +119,13 @@ body {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   
 }
 
 .main__list-item {
   
-  flex: 1 1 auto;
+/*   flex: 1 1 auto; */
   padding: 0.25em;
   width:16%;
   
