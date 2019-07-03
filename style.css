@@ -109,6 +109,7 @@ body {
 .main {
   
   margin:100px 0;
+  background-color:white;
   
 }
 
@@ -125,7 +126,7 @@ body {
 .main__list-item {
   
   flex: 0 0 auto;
-  width: 13em;
+  width: auto;
   height: auto;
   padding: 0.25em;
 /*   border: solid; */
@@ -148,6 +149,48 @@ body {
 .main__list-item img {
   
   object-fit: cover;
-  height: 10rem;
   
 }
+
+.footer__credit, .footer__link{
+  
+  color: white;
+  padding:10px;
+  
+}
+
+.footer__link a {
+  
+  color: white;
+  text-decoration: none;
+  
+}
+
+.footer__inner {
+  
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  
+}
+
+.footer__inner-container {
+  
+  position: relative;
+  
+}
+
+.footer {
+ 
+  display:block;
+  position:fixed;
+  z-index:-1;
+  bottom:0;
+  
+  background-color:#222; 
+  width:100%;
+  
+}
+
