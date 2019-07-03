@@ -90,16 +90,23 @@ function onKeyUp(e) {
 
 function onHover(e){
   
-  if(e.target.)
+  console.log(e.target.parentNode.nodeName);
+  if(e.target.parentNode.nodeName == "A"){
   
-  console.log(e.target.parentNode.firstChild);
-  e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
+    console.log(e.target.parentNode.firstChild);
+    e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
+  
+  }
   
 }
 
 function onExit(e){
   
-  console.log(e.target.parentNode.firstChild);
-  e.target.parentNode.setAttribute("style", "filter: none");
+  if(e.target.parentNode.nodeName == "A"){
+  
+    console.log(e.target.parentNode.firstChild);
+    e.target.parentNode.setAttribute("style", "filter: none");
+    
+  }
   
 }
