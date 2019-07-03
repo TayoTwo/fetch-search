@@ -24,23 +24,25 @@ body {
   overflow: hidden;
 }
 
+.header {
+  
+  position:fixed;
+  top:0;
+  
+}
+
 .header__input {
   
-  padding: 1em 35em 1em 1em;
+  flex: 2 1 auto;
 
 }
 
-.header__searchbox {
+.header__searchbox,.header__home-btn {
   
   margin: 1em;
   
 }
 
-.header__home-btn {
-  
-  margin: 1em;
-  
-}
 
 .header__btn{
   
@@ -56,10 +58,16 @@ body {
 }
 
 
-.header__container {
+.header__inner {
   
   display: flex;
   flex-wrap: wrap;
+  
+}
+
+.main {
+  
+  margin-top: 100px;
   
 }
 
@@ -97,7 +105,7 @@ body {
 .main__list-item img {
   
   object-fit: cover;
-  height: 10%;
+  height: 10em;
   
   
 }
