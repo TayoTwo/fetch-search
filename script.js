@@ -3,14 +3,6 @@ document.getElementById("header__search-input").focus();
 
 start();
 
-
-maintainAspectRatio(){
-  
-  img = document.getElementById();
-  
-  img.style.
-  
-}
 setInterval(function(){
   
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
@@ -22,6 +14,7 @@ setInterval(function(){
     if(arr[i].style.display != "none"){
        
        count++;
+       arr[i].getElementsByClassName("item-img")[0].style.height =  arr[i].getElementsByClassName("item-img")[0].style.width * 0.75;
        
     }
     
@@ -59,7 +52,6 @@ async function start() {
   
   );
   
-  console.log(data);
   return data;
   
 }
@@ -77,6 +69,7 @@ function loadPhoto({url, author} = {}){
     node.addEventListener("mouseover", onHover, false);
   node.addEventListener("mouseout", onExit, false);
     i.src = url;
+    i.className = "item-img";
     c.innerText = author;
   
     f.appendChild(i);
