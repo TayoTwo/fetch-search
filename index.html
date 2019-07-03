@@ -31,7 +31,7 @@
             <form action="/" method="get" class="header__search-form" role="search">
 
               <label for="search-input" class="header__label"></label> 
-              <input type="text" name="q" class="header__input" placeholder="Search for an author" role="searchbox" onkeyup="onKeyUp(event)">
+              <input id="header__search-input" type="text" name="q" class="header__input" placeholder="Search for an author" role="searchbox" onkeyup="onKeyUp(event)">
               
 
               <div class="search__submit sr-only">
@@ -42,13 +42,9 @@
 
           </div>
         
-          <div class="header__photo-count-container">
-            
-            <div class="header__photo-count">
-              <p><strong id="photo-count">0</strong> PHOTOS</p>
+          <div class="header__photo-count">
+              <p class="header__photo-count-text"><strong id="photo-count">0</strong> PHOTOS</p>
             </div>
-            
-          </div>
                     
         </div>
  

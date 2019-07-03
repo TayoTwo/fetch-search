@@ -1,6 +1,8 @@
 const ulist = document.getElementById('main__list');
+document.getElementById("header__search-input").focus();
 
 start();
+
 
 setInterval(function(){
   

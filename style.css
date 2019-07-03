@@ -40,38 +40,35 @@ body {
   
   padding: 1em;
   width: 100%;  
+  border: none;
 
 }
 
-.header__searchbox,.header__home-btn,.header__photo-count-container {
+.header__searchbox,.header__home-btn,.header__photo-count {
   
   margin: 1em;
   
 }
 
 
-.header__photo-count,.header__btn{
+.header__photo-count-text,.header__btn{
   
   padding: 15px;
+  margin:0;
   
 }
 
-.header__photo-count p {
-  
-  margin: 0;
-  
-}
+.header__searchbox {
 
-
-.header__searchbox{
-
-  flex: 5 1 auto;
+  flex: 4 1 auto;
   
 }
 
-.header__photo-count-container {
+.header__photo-count {
   
   flex: 1 1 auto;
+  text-align: right;
+  
   
 }
 
@@ -121,7 +118,7 @@ body {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   
 }
 
