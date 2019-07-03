@@ -50,7 +50,7 @@ body {
 
 .header__photo-count-container {
   
-  float: right;
+  align-self:flex-end;
   
 }
 
@@ -82,7 +82,8 @@ body {
   
   width:100%;
   display: flex;
-  flex-wrap: wrap;
+  align-items:center;
+/*   flex-wrap: wrap; */
   
 }
 
