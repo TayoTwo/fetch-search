@@ -6,12 +6,21 @@ setInterval(function(){
   
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   
-  for()
+  var count = 0;
   
-  console.log(arr);
-  document.getElementById("photo-count").innerText = ;
+  for(var i =0;i < arr.length;i++){
+    
+    if(arr[i].style.display != "none"){
+       
+       count++;
+       
+    }
+    
+  }
   
-},2000);
+  document.getElementById("photo-count").innerText = count;
+  
+},250);
 
 async function start() {
 
@@ -107,7 +116,7 @@ function onHover(e){
   // console.log(e.target.parentNode.nodeName);
   if(e.target.parentNode.nodeName == "A"){
   
-    console.log(e.target.parentNode.firstChild);
+    // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
   
   }
