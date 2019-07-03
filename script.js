@@ -4,13 +4,15 @@ start();
 
 setInterval(function(){
   
+  console.log(Array.prototype.slice.call(ulist));
+  document.getElementById("photo-count").innerText = Array.prototype.slice.call(ulist).length;
   
-  
-},1000);
+},);
 
 async function start() {
 
   console.log("Starting...");
+  
   const data = await (
     fetch('https://picsum.photos/v2/list?page=5&limit=200')
     .then(response => response.json())
@@ -34,8 +36,10 @@ async function start() {
     }))
   
   );
+  
   console.log(data);
   return data;
+  
 }
 
 function loadPhoto({url, author} = {}){
@@ -96,7 +100,7 @@ function onKeyUp(e) {
 
 function onHover(e){
   
-  console.log(e.target.parentNode.nodeName);
+  // console.log(e.target.parentNode.nodeName);
   if(e.target.parentNode.nodeName == "A"){
   
     console.log(e.target.parentNode.firstChild);
@@ -110,7 +114,7 @@ function onExit(e){
   
   if(e.target.parentNode.nodeName == "A"){
   
-    console.log(e.target.parentNode.firstChild);
+    // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: none");
     
   }
