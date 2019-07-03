@@ -89,6 +89,7 @@ function onKeyUp(e) {
 
 function onHover(e){
   
-  
+  console.log("Hovering...");
+  e.target.style.filter.setAttribute("style", "drop-shadow(16px 16px 10px black);");
   
 }
