@@ -102,7 +102,6 @@ body {
 
 .main__container {
   
-  right:1000px;
 /*   max-width: 100%; */
 /*   margin: 0 auto; */
   
@@ -118,17 +117,19 @@ body {
 
 .main__list {
   
-  padding: 0px;
-  list-style-type: none;
+  width: 90%;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   
+  margin:0 auto;
+  padding:0;
+  list-style-type: none;
+  
 }
 
 .main__list-item {
-  
-  display:block;
   
   margin:10px 0px 0px 10px;
 /*   margin:10px; */
