@@ -62,7 +62,7 @@ async function start() {
 function loadPhoto({url, author} = {}){
 
     var node = document.createElement("li");
-    var f = document.createElement('figure');
+    var f = document.createElement('span');
     var i = document.createElement("img");
     var c = document.createElement("figcaption");
     node.className += "main__list-item";
@@ -119,7 +119,7 @@ function onKeyUp(e) {
 function onHover(e){
   
   // console.log(e.target.parentNode.nodeName);
-  if(e.target.parentNode.nodeName == "FIGURE"){
+  if(e.target.parentNode.nodeName == "SPAN"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
@@ -130,7 +130,7 @@ function onHover(e){
 
 function onExit(e){
   
-  if(e.target.parentNode.nodeName == "FIGURE"){
+  if(e.target.parentNode.nodeName == "SPAN"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: none");
