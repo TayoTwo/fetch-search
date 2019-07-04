@@ -201,7 +201,7 @@ hr {
 
 }
 
-.main__list-item > figure > span:hover  {
+.main__list-item > figure:hover, .main__list-item > figure > span:hover  {
  
   color:rgb(255, 255, 255,1); 
   background-color:rgb(0, 0, 0,0.5);
