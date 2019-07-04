@@ -1,6 +1,6 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
-var pagecount = 1;
+var hitPageLimit = false;
 var loadingPages = false;
 
 input.focus();
@@ -21,12 +21,12 @@ window.addEventListener("scroll",function(){
      
      document.getElementById("header__bar").style.display = "none";
      
-  } else if (pagecount < 6 && (window.innerHeight + window.scrollY) >= limit && !loadingPages) {
+  } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= limit && !loadingPages) {
             
       console.log("Loading more photos");
     
       loadingPages = true;
-      fetchData();
+      if(fetchData() == []) ? hitPageLimit = true: ;
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
                            document.body.offsetHeight, 
