@@ -3,29 +3,29 @@ document.getElementById("header__search-input").focus();
 
 start();
 
-setInterval(function(){
+// setInterval(function(){
   
-  var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
+//   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   
-  var count = 0;
+//   var count = 0;
   
-  for(var i =0;i < arr.length;i++){
+//   for(var i =0;i < arr.length;i++){
     
-    var img = arr[i].getElementsByClassName("item-img")[0];
+//     var img = arr[i].getElementsByClassName("item-img")[0];
     
-    if(arr[i].style.display != "none"){
+//     if(arr[i].style.display != "none"){
        
-       count++;
-       // console.log();
-       img.setAttribute("height",img.getAttribute("width") * 0.75);
+//        count++;
+//        // console.log();
+//        img.setAttribute("height",img.getAttribute("width") * 0.75);
        
-    }
+//     }
     
-  }
+//   }
   
-  document.getElementById("photo-count").innerText = count;
+//   document.getElementById("photo-count").innerText = count;
   
-},1000);
+// },1000);
 
 async function start() {
 
