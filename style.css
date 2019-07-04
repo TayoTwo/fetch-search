@@ -155,7 +155,7 @@ hr {
 
 .main__list-item {
   
-  margin: auto;
+  margin:0.1rem auto;
   width: calc((100% - 5rem) / 6);
   
 }
