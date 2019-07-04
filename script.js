@@ -6,6 +6,9 @@ start();
 setInterval(function(){
   
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
+  var intElemScrollTop = document.body.scrollTop;
+  intElemScrollTop = document.getElementsByTagName("main").scrollTop;
+  console.log(intElemScrollTop);
   
   var count = 0;
   
@@ -20,6 +23,7 @@ setInterval(function(){
        // img.setAttribute("height",img.getAttribute("width") * 0.75);
        
     }
+    
     
   }
   
