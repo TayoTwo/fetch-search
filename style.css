@@ -54,7 +54,7 @@ hr {
 
 }
 
-.header__bar {
+#header__bar {
   
   
   
@@ -62,7 +62,7 @@ hr {
 
 .header__searchbox,.header__home-btn,.header__photo-count {
   
-  margin: 1rem;
+  margin:0.85rem 0;
   
 }
 
@@ -267,4 +267,5 @@ hr {
   [class="main__list-item"] {
      width: calc((100% - 70px) / 2);
   }
+  
 }
