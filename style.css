@@ -100,11 +100,12 @@ body {
   
 }
 
-.main__inner-container {
+.main__container {
   
-  position: relative;
+  margin: 0 auto;
   
 }
+
 
 .main {
   
@@ -116,7 +117,7 @@ body {
 .main__list {
   
   padding: 0px;
-/*   margin: 0 10%; */
+  margin: 0;
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;

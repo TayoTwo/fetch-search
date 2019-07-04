@@ -123,8 +123,7 @@ function onHover(e){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
-    e.target.parentNode.lastChild.setAttribute("style","color:rgb(255, 255, 255,1);");
-    e.target.parentNode.lastChild.setAttribute("style","background-color:rgb(0, 0, 0,0.5);");
+    e.target.parentNode.lastChild.setAttribute("style","color:rgb(255, 255, 255,1); background-color:rgb(0, 0, 0,0.5);");
     
   
   }
@@ -137,8 +136,7 @@ function onExit(e){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: none");
-    e.target.parentNode.lastChild.setAttribute("style","color:rgb(255, 255, 255,0);");
-    e.target.parentNode.lastChild.setAttribute("style","background-color:rgb(0, 0, 0,0);");
+    e.target.parentNode.lastChild.setAttribute("style","color:rgb(255, 255, 255,0); background-color:rgb(0, 0, 0,0);");
     
   }
   
