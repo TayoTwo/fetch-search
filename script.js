@@ -62,9 +62,9 @@ async function start() {
 function loadPhoto({url, author} = {}){
 
     var node = document.createElement("li");
-    var f = document.createElement('span');
+    var f = document.createElement('figure');
     var i = document.createElement("img");
-    var c = document.createElement("figcaption");
+    var c = document.createElement("span");
     node.className += "main__list-item";
 
     f.href =  "#";
@@ -119,10 +119,11 @@ function onKeyUp(e) {
 function onHover(e){
   
   // console.log(e.target.parentNode.nodeName);
-  if(e.target.parentNode.nodeName == "SPAN"){
+  if(e.target.parentNode.nodeName == "FIGURE"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
+    e.target.parentNode.setAttribute("style","background-color:rgb(204, 204, 204,0.5);")
   
   }
   
@@ -130,10 +131,11 @@ function onHover(e){
 
 function onExit(e){
   
-  if(e.target.parentNode.nodeName == "SPAN"){
+  if(e.target.parentNode.nodeName == "FIGURE"){
   
     // console.log(e.target.parentNode.firstChild);
     e.target.parentNode.setAttribute("style", "filter: none");
+    e.target.parentNode.setAttribute("style","background-color:rgb(204, 204, 204,0);")
     
   }
   
