@@ -1,9 +1,16 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
+var pagecount = 1;
 
 input.focus();
 
-start();
+fetchData();
+
+body.addEventListener(function(){
+  
+  
+  
+},);
 
 setInterval(function(){
   
@@ -32,12 +39,12 @@ setInterval(function(){
   
 },1000);
 
-async function start() {
+async function fetchData() {
 
   console.log("Starting...");
   
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=4&limit=100')
+    fetch('https://picsum.photos/v2/list?page=1&limit=100')
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url: url} = photo;
