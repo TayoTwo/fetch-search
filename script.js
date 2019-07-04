@@ -8,12 +8,23 @@ fetchData();
 
 window.addEventListener("scroll",function(){
   
-  console.log(window.scrollY);
+  var limit = Math.max( document.body.scrollHeight, 
+                       document.body.offsetHeight, 
+                       document.documentElement.clientHeight, 
+                       document.documentElement.scrollHeight, 
+                       document.documentElement.offsetHeight );
+  
+  console.log(limit window.scrollY);
   
   if(window.scrollY < 0.5){
      
      document.getElementById("header__bar").style.display = "none";
      
+  } else if(window.scrollY >= (limit - 600)){
+            
+      console.log("Loading more photos");
+      fetchData();
+            
   } else {
     
      document.getElementById("header__bar").style.display = "";
@@ -54,7 +65,7 @@ async function fetchData() {
   console.log("Starting...");
   
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=1&limit=100')
+    fetch('https://picsum.photos/v2/list?page=' + pagecount +'&limit=100')
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url: url} = photo;
@@ -77,6 +88,7 @@ async function fetchData() {
   
   );
   
+  pagecount++;
   return data;
   
 }
