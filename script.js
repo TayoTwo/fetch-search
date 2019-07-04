@@ -1,6 +1,7 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
 var pagecount = 1;
+var loading = true;
 
 input.focus();
 
@@ -8,22 +9,20 @@ fetchData();
 
 window.addEventListener("scroll",function(){
   
-  var limit = Math.max( document.body.scrollHeight, 
-                       document.body.offsetHeight, 
-                       document.documentElement.clientHeight, 
-                       document.documentElement.scrollHeight, 
-                       document.documentElement.offsetHeight );
+  var limit = document.body.offsetHeight;
   
-  console.log(limit window.scrollY);
+  console.log(loading);
   
   if(window.scrollY < 0.5){
      
      document.getElementById("header__bar").style.display = "none";
      
-  } else if(window.scrollY >= (limit - 600)){
+  } else if ((window.innerHeight + window.scrollY) >= limit && loading) {
             
       console.log("Loading more photos");
+      loading = false;
       fetchData();
+      setTimeout(1000);
             
   } else {
     
@@ -37,7 +36,6 @@ setInterval(function(){
   
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   var intElemScrollTop = document.body.scrollTop;
-  intElemScrollTop = document.getElementsByTagName("main").scrollTop;
   
   var count = 0;
   
@@ -48,11 +46,8 @@ setInterval(function(){
     if(arr[i].style.display != "none"){
        
        count++;
-       // console.log();
-       // img.setAttribute("height",img.getAttribute("width") * 0.75);
        
     }
-    
     
   }
   
@@ -61,35 +56,33 @@ setInterval(function(){
 },1000);
 
 async function fetchData() {
+  
+    const data = await (
+      fetch('https://picsum.photos/v2/list?page=' + pagecount +'&limit=100')
+      .then(response => response.json())
+      .then(data => data.map(function(photo){
+        let {author, download_url: url} = photo;
 
-  console.log("Starting...");
-  
-  const data = await (
-    fetch('https://picsum.photos/v2/list?page=' + pagecount +'&limit=100')
-    .then(response => response.json())
-    .then(data => data.map(function(photo){
-      let {author, download_url: url} = photo;
-      
-      url = url.replace(/(\/+)$/, '')
-        .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
-          const $max = Math.max($width, $height);
-          const max = Math.min($max, 512);
-        
-          [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
-        
-          return `${$width}/${$height}`;
-        });
+        url = url.replace(/(\/+)$/, '')
+          .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
+            const $max = Math.max($width, $height);
+            const max = Math.min($max, 512);
 
-      loadPhoto({url, author});
-      
-      return([url,photo.author]);
-      
-    }))
-  
-  );
-  
-  pagecount++;
-  return data;
+            [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
+
+            return `${$width}/${$height}`;
+          });
+
+        loadPhoto({url, author});
+
+        return([url,photo.author]);
+
+      }))
+
+    );
+
+    pagecount++;
+    return data;
   
 }
 
