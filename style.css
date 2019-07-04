@@ -14,6 +14,13 @@ body {
   
 }
 
+hr {
+  
+  margin-top:90px;
+  z-index: 11;
+  
+}
+
 .sr-only {
   position: absolute;
   left: -99999px;
@@ -29,7 +36,7 @@ body {
   display:block;
   position:fixed;
   top:0;
-  z-index: 100;
+  z-index: 10;
   height:70x;
   background-color:white; 
   width:100%;
