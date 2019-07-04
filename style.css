@@ -156,10 +156,10 @@ body {
 .main__list-item > figure > img {
   
   width:100%;
-  min-height:11.25em;
+  height:100%;
   
-  max-width:60em;
-  max-height:45em;
+  position: absolute;
+/*   overflow: hidden; */
   object-fit: cover;
   
 }
