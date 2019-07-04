@@ -156,6 +156,8 @@ body {
   
   object-fit: cover;
   
+  border-radius:3px;
+  
   position:absolute;
 
 }
