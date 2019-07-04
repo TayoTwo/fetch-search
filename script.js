@@ -1,7 +1,7 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
 var pagecount = 1;
-var loading = true;
+var loadingPages = false;
 
 input.focus();
 
@@ -9,21 +9,24 @@ fetchData();
 
 window.addEventListener("scroll",function(){
   
-  var limit = document.body.offsetHeight;
+  var limit = document.body.offsetHeight - window.innerHeight;
   
-  console.log(loading);
+  console.log(loadingPages);
   
   if(window.scrollY < 0.5){
      
      document.getElementById("header__bar").style.display = "none";
      
-  } else if ((window.innerHeight + window.scrollY) >= limit && loading) {
+  } else if (pagecount < 6 && (window.innerHeight + window.scrollY) >= limit && !loadingPages) {
             
       console.log("Loading more photos");
-      loading = false;
+    
+      loadingPages = true;
       fetchData();
-      setTimeout(1000);
-            
+      limit = document.body.offsetHeight - window.innerHeight;
+      loadingPages = false;
+      setTimeout(2000);
+    
   } else {
     
      document.getElementById("header__bar").style.display = "";
