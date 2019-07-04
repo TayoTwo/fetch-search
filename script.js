@@ -1,5 +1,6 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
+var pagecount = 1;
 var hitPageLimit = false;
 var loadingPages = false;
 
@@ -26,7 +27,8 @@ window.addEventListener("scroll",function(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      if(fetchData() == []) ? hitPageLimit = true: ;
+      (fetchData() == []) ? (hitPageLimit = true) : (hitPageLimit = false);
+      console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
                            document.body.offsetHeight, 
