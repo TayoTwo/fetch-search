@@ -122,7 +122,7 @@ function onHover(e){
   if(e.target.parentNode.nodeName == "FIGURE"){
   
     // console.log(e.target.parentNode.firstChild);
-    e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 10px black);");
+    e.target.parentNode.setAttribute("style", "filter: drop-shadow(0 0 5px black);");
     e.target.parentNode.lastChild.setAttribute("style","color:rgb(255, 255, 255,1); background-color:rgb(0, 0, 0,0.5);");
     
   
