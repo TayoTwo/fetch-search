@@ -6,11 +6,21 @@ input.focus();
 
 fetchData();
 
-body.addEventListener(function(){
+window.addEventListener("scroll",function(){
   
+  console.log(window.scrollY);
   
+  if(window.scrollY < 0.5){
+     
+     document.getElementById("header__bar").style.display = "none";
+     
+  } else {
+    
+     document.getElementById("header__bar").style.display = "";
+    
+  }
   
-},);
+},false);
 
 setInterval(function(){
   
