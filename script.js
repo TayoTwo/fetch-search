@@ -1,5 +1,7 @@
 const ulist = document.getElementById('main__list');
-document.getElementById("header__search-input").focus();
+var input = document.getElementById("header__search-input");
+
+input.focus();
 
 start();
 
@@ -8,7 +10,6 @@ setInterval(function(){
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   var intElemScrollTop = document.body.scrollTop;
   intElemScrollTop = document.getElementsByTagName("main").scrollTop;
-  console.log(intElemScrollTop);
   
   var count = 0;
   
@@ -36,7 +37,7 @@ async function start() {
   console.log("Starting...");
   
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=5&limit=200')
+    fetch('https://picsum.photos/v2/list?page=4&limit=100')
     .then(response => response.json())
     .then(data => data.map(function(photo){
       let {author, download_url: url} = photo;
@@ -44,7 +45,7 @@ async function start() {
       url = url.replace(/(\/+)$/, '')
         .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
           const $max = Math.max($width, $height);
-          const max = Math.min($max, 1024);
+          const max = Math.min($max, 512);
         
           [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
         
@@ -87,7 +88,7 @@ function loadPhoto({url, author} = {}){
 function sort(text){
   
   console.log(text);
-  
+  input.value = text;
   const regex = RegExp(`^${text}`, 'i');
   
   const listItems = [...ulist.getElementsByTagName('li')]
