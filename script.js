@@ -4,7 +4,7 @@ var pagecount = 1;
 var imageData = [];
 var hitPageLimit = false;
 var loadingPages = false;
-var prevArrayLength = 0;
+var prevArray = [];
 
 // input.focus();
 
@@ -15,7 +15,7 @@ async function start(){
  imageData.push(await fetchData());
   imageData = [...imageData];
   console.log(imageData[0]);
-  prevArrayLength = imageData.length;
+  // prevArray = imageData[0];
 }
 
 async function scroll(){
@@ -37,10 +37,11 @@ async function scroll(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      imageData[0].concat(await fetchData());
+      imageData[0] = imageData[0].concat(await fetchData());
     
-      console.log(imageData[0].length - prevArrayLength);
-      (imageData[0].length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
+      console.log(imageData[0]);
+      console.log(prevArray);
+      (imageData[0].length == prevArray.length) ? (hitPageLimit = true) : (hitPageLimit = false);
       // console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
@@ -49,7 +50,7 @@ async function scroll(){
                            document.documentElement.scrollHeight, 
                            document.documentElement.offsetHeight );
     
-       prevArrayLength = imageData[0].length;
+       prevArray = imageData[0];
     
   } else {
     
@@ -165,6 +166,12 @@ function sort(text){
       }
 
     });
+  
+}
+
+function onSelect(id){
+
+    imageData[0];  
   
 }
 
