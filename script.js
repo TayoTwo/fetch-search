@@ -1,12 +1,19 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
 var pagecount = 1;
+var imageData = [];
 var hitPageLimit = false;
 var loadingPages = false;
 
 // input.focus();
 
-var imageData = fetchData();
+start();
+
+async function start(){
+  
+ imageData.push(await fetchData());
+  
+}
 
 var prevArrayLength = imageData.length;
 
@@ -31,7 +38,7 @@ window.addEventListener("scroll",function(){
     
       loadingPages = true;
       imageData.push(fetchData());
-      console(imageData.length - prevArrayLength);
+      console.log(imageData);
       (imageData.length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
       // console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
