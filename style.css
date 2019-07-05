@@ -13,7 +13,11 @@ body {
 
 @media (min-width : 360px) {
   
-  
+  hr {
+   
+    display:none;
+    
+  }
 
   .sr-only {
     position: absolute;
@@ -200,6 +204,12 @@ body {
 } 
 
 @media (min-width : 640px){
+  
+  hr {
+   
+    display:none;
+    
+  }
 
   /* For mobile phones: */
   .main__list-item {
@@ -220,7 +230,9 @@ body {
 @media (min-width: 1080px) {
   
    hr {
-    /*   margin-top:82px; */
+     
+    display:block;
+    margin-top:82px;
     margin: 0;
     padding: 0;
     z-index: 10;
