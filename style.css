@@ -155,7 +155,7 @@ hr {
 
 .main__list-item {
   
-  margin:0.1rem auto;
+  margin:0.15rem 0 0.15rem auto;
   width: calc((100% - 5rem) / 6);
   
 }
@@ -266,6 +266,7 @@ hr {
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class="main__list-item"] {
+    
      width: calc((100% - 5rem) / 2);
   }
   
