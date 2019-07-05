@@ -27,7 +27,7 @@ window.addEventListener("scroll",function(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      (fetchData() == []) ? (hitPageLimit = true) : (hitPageLimit = false);
+      (imageData.push(fetchData()) == []) ? (hitPageLimit = true) : (hitPageLimit = false);
       console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
