@@ -4,6 +4,7 @@ var pagecount = 1;
 var imageData = [];
 var hitPageLimit = false;
 var loadingPages = false;
+var prevArrayLength = 0;
 
 // input.focus();
 
@@ -12,13 +13,10 @@ start();
 async function start(){
   
  imageData.push(await fetchData());
-  
+  prevArrayLength = imageData.length;
 }
 
-var prevArrayLength = imageData.length;
-
-
-window.addEventListener("scroll",function(){
+async function scroll(){
   
   var limit = Math.max( document.body.scrollHeight, 
                            document.body.offsetHeight, 
@@ -37,7 +35,8 @@ window.addEventListener("scroll",function(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      imageData.push(fetchData());
+      imageData.push(await fetchData);
+      imageData = [...imageData];
       console.log(imageData);
       (imageData.length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
       // console.log(hitPageLimit);
@@ -56,7 +55,9 @@ window.addEventListener("scroll",function(){
     
   }
   
-},false);
+}
+
+window.addEventListener("scroll",scroll,1000);
 
 setInterval(function(){
   
@@ -78,6 +79,7 @@ setInterval(function(){
   document.getElementById("photo-count").innerText = count;
   
 },1000);
+
 
 async function fetchData() {
   
