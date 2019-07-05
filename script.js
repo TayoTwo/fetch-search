@@ -73,7 +73,7 @@ async function fetchData() {
       .then(data => data.map(function(photo){
         let {author, download_url: url} = photo;
 
-        url = url.replace(/(\/+)$/, '')
+        var nurl = url.replace(/(\/+)$/, '')
           .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
             const $max = Math.max($width, $height);
             const max = Math.min($max, 512);
@@ -85,7 +85,7 @@ async function fetchData() {
 
         loadPhoto({url, author});
 
-        return([[url,photo.author]);
+        return([[nurl,photo.author],url]);
 
       }))
 
@@ -94,6 +94,7 @@ async function fetchData() {
     pagecount++;
     loadingPages = false;
   
+    console.log(data);
     return data;
   
 }
