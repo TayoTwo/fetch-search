@@ -13,12 +13,7 @@ body {
 
 @media (min-width : 360px) {
   
-   hr {
-    /*   margin-top:82px; */
-    margin: 0;
-    padding: 0;
-    z-index: 10;
-  }
+  
 
   .sr-only {
     position: absolute;
@@ -217,12 +212,19 @@ body {
   }
 
   .main__list {
-    width: 90%;
+    width: 100%;
   }
   
 }
 
 @media (min-width: 1080px) {
+  
+   hr {
+    /*   margin-top:82px; */
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
   
   .main__list {
     
