@@ -6,7 +6,7 @@ var loadingPages = false;
 
 // input.focus();
 
-fetchData();
+var imageData = fetchData();
 
 window.addEventListener("scroll",function(){
   
@@ -83,7 +83,7 @@ async function fetchData() {
             return `${$width}/${$height}`;
           });
 
-        loadPhoto({url, author});
+        loadPhoto({nurl, author});
 
         return([[nurl,photo.author],url]);
 
