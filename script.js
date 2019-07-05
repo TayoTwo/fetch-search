@@ -33,7 +33,7 @@ window.addEventListener("scroll",function(){
       imageData.push(fetchData());
       console(imageData.length - prevArrayLength);
       (imageData.length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
-      console.log(hitPageLimit);
+      // console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
                            document.body.offsetHeight, 
@@ -89,7 +89,7 @@ async function fetchData() {
 
             return `${$width}/${$height}`;
           });
-
+        // console.log({nurl, author});
         loadPhoto({nurl, author});
 
         return([[nurl,photo.author],url]);
@@ -101,7 +101,7 @@ async function fetchData() {
     pagecount++;
     loadingPages = false;
   
-    console.log(data);
+    // console.log(data);
     return data;
   
 }
@@ -112,7 +112,7 @@ async function fetchImage(id){
   
 }
 
-function loadPhoto({url, author} = {}){
+function loadPhoto({nurl, author} = {}){
 
     var node = document.createElement("li");
     var f = document.createElement('figure');
@@ -122,7 +122,7 @@ function loadPhoto({url, author} = {}){
 
     f.href =  "#";
     f.addEventListener("click", onClick, false);
-    i.src = url;
+    i.src = nurl;
     i.className = "item-img";
     c.innerText = author;
   
@@ -135,7 +135,7 @@ function loadPhoto({url, author} = {}){
 
 function sort(text){
   
-  console.log(text);
+  // console.log(text);
   input.value = text;
   const regex = RegExp(`^${text}`, 'i');
   
@@ -145,6 +145,13 @@ function sort(text){
       item.style.display = `${item.innerText}`
         .split(/[^a-z -+[0-9]]/ig)
         .some(w => regex.test(w)) ? "" : "none";
+      
+      if(item.style.display = ""){
+         
+        console.log(listItems.indexOf(item));
+         item.getElementsByTagName('img')[0].src = imageData[1][listItems.indexOf(item)];
+         
+      }
 
     });
   
