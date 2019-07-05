@@ -8,6 +8,9 @@ var loadingPages = false;
 
 var imageData = fetchData();
 
+var prevArrayLength = imageData.length;
+
+
 window.addEventListener("scroll",function(){
   
   var limit = Math.max( document.body.scrollHeight, 
@@ -27,7 +30,9 @@ window.addEventListener("scroll",function(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      (imageData.push(fetchData()) == []) ? (hitPageLimit = true) : (hitPageLimit = false);
+      imageData.push(fetchData());
+      console(imageData.length - prevArrayLength);
+      (imageData.length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
       console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
@@ -35,6 +40,8 @@ window.addEventListener("scroll",function(){
                            document.documentElement.clientHeight, 
                            document.documentElement.scrollHeight, 
                            document.documentElement.offsetHeight );
+    
+     prevArrayLength = imageData.length;
     
   } else {
     
