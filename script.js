@@ -22,7 +22,7 @@ window.addEventListener("scroll",function(){
      
      document.getElementById("header__bar").style.display = "none";
      
-  } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= limit && !loadingPages) {
+  } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= (limit * 0.75) && !loadingPages) {
             
       console.log("Loading more photos");
     
