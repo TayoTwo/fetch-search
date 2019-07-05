@@ -122,6 +122,12 @@ hr {
   
 }
 
+.header__photo-count-text {
+  
+  display: inline-block;
+  
+}
+
 .main__container {
   
 /*   max-width: 100%; */
@@ -269,6 +275,13 @@ hr {
   [class="main__list-item"] {
      margin:0.15rem;
      width: calc((100% - 0.6rem) / 2);
+  }
+  
+  [class="header__photo-count-text"] {
+    
+    display="none";
+    visibility: hidden;
+    
   }
   
 }
