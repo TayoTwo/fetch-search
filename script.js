@@ -4,7 +4,7 @@ var pagecount = 1;
 var hitPageLimit = false;
 var loadingPages = false;
 
-input.focus();
+// input.focus();
 
 fetchData();
 
