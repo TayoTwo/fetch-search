@@ -118,12 +118,6 @@ async function fetchData() {
   
 }
 
-async function fetchImage(id){
-  
-  const image = await fetch();
-  
-}
-
 function loadPhoto({nurl, author} = {}){
 
     var node = document.createElement("li");
@@ -171,7 +165,16 @@ function sort(text){
 
 function onSelect(id){
 
-    imageData[0];  
+  var rawImg = imageData[0][id][1];  
+  
+  document.getElementsByTagName('img')[id] = rawImg;
+  
+}
+
+async function fetchImage(id){
+  
+  const image = await fetch();
+  
   
 }
 
