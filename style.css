@@ -142,7 +142,7 @@ hr {
 
 .main__list {
   
-/*   width: 85%; */
+  width: 85%;
 
   display: flex;
   flex-wrap: wrap;
@@ -157,7 +157,7 @@ hr {
 .main__list-item {
   
   margin:0.15rem;
-  width: calc((100% - 5rem) / 6);
+  width: calc((100% - 1.8rem) / 6);
   
 }
 
@@ -268,7 +268,7 @@ hr {
   /* For mobile phones: */
   [class="main__list-item"] {
      margin:0.15rem;
-     width: calc((100% - 1rem) / 2);
+     width: calc((100% - 0.6rem) / 2);
   }
   
 }
