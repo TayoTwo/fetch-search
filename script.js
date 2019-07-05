@@ -129,7 +129,7 @@ function sort(text){
     .forEach(item => {
 
       item.style.display = `${item.innerText}`
-        .split(/[^a-z -[0-9]]/ig)
+        .split(/[^a-z -+[0-9]]/ig)
         .some(w => regex.test(w)) ? "" : "none";
 
     });
