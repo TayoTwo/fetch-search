@@ -201,7 +201,6 @@ hr {
   .main__list-item>figure {
     padding-top: 75%;
   }
-
   .main__list {
     width: 90%;
   }
@@ -215,7 +214,10 @@ hr {
   }
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
 
   /* For mobile phones: */
   .main__list-item {
