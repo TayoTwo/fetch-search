@@ -124,16 +124,15 @@ hr {
 
 .main__container {
   
-/*   max-width: 100%; */
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
+ width: 100%;
+/*  margin: 0 auto; */
   
 }
 
 
 .main {
   
+  width: 100%;
   margin:5rem 0;
   background-color:white;
   z-index:13;
@@ -142,20 +141,20 @@ hr {
 
 .main__list {
   
-  width: 85%;
-
+/*   width:95%; */
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   
   padding:0;
   list-style-type: none;
+  margin:0 auto;
   
 }
 
 .main__list-item {
   
-  margin:0.15rem 0 0.15rem auto;
   width: calc((100% - 5rem) / 6);
   
 }
