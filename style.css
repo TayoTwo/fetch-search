@@ -190,7 +190,11 @@ hr {
   width: 100%;
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (
+((min-device-width : 768px) and (max-device-width : 1024px))   
+or
+((min-device-width : 320px) and (max-device-width : 480px)))
+and (orientation : portrait) {
 
   /* For mobile phones: */
   .main__list-item {
@@ -214,9 +218,10 @@ hr {
   }
 }
 
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+@media only screen and (
+((min-device-width : 768px) and (max-device-width : 1024px))   
+or
+((min-device-width : 320px) and (max-device-width : 480px)))
 and (orientation : landscape) {
 
   /* For mobile phones: */
