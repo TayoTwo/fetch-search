@@ -85,7 +85,7 @@ async function fetchData() {
 
         loadPhoto({url, author});
 
-        return([url,photo.author]);
+        return([[url,photo.author]);
 
       }))
 
@@ -95,6 +95,12 @@ async function fetchData() {
     loadingPages = false;
   
     return data;
+  
+}
+
+async function fetchImage(id){
+  
+  const image = await fetch();
   
 }
 
