@@ -162,7 +162,7 @@ hr {
   
 }
 
-.main__list-item > figure{
+.main__list-item:first-child{
   
   margin:0;
   height:0;
@@ -269,7 +269,19 @@ hr {
   /* For mobile phones: */
   [class="main__list-item"] {
      margin:0.15rem;
-     width: calc((100% - 0.6rem) / 2);
+     width: calc((100% - 1.2rem) / 3);
+  }
+  
+  [class="main__list-item:first-child"] {
+    
+    padding-top:75%; 
+    
+  }
+  
+  [class="main__list"] {
+    
+    width:100%;
+    
   }
   
   [class="header__photo-count-text"] {
