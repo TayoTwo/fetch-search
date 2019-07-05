@@ -13,6 +13,8 @@ start();
 async function start(){
   
  imageData.push(await fetchData());
+  imageData = [...imageData];
+  console.log(imageData[0]);
   prevArrayLength = imageData.length;
 }
 
@@ -24,7 +26,7 @@ async function scroll(){
                            document.documentElement.scrollHeight, 
                            document.documentElement.offsetHeight );
   
-  console.log(loadingPages);
+  // console.log(loadingPages);
   
   if(window.scrollY < 0.5){
      
@@ -35,10 +37,10 @@ async function scroll(){
       console.log("Loading more photos");
     
       loadingPages = true;
-      imageData.push(await fetchData);
-      imageData = [...imageData];
-      console.log(imageData);
-      (imageData.length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
+      imageData[0].concat(await fetchData());
+    
+      console.log(imageData[0].length - prevArrayLength);
+      (imageData[0].length == prevArrayLength) ? (hitPageLimit = true) : (hitPageLimit = false);
       // console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
@@ -47,7 +49,7 @@ async function scroll(){
                            document.documentElement.scrollHeight, 
                            document.documentElement.offsetHeight );
     
-     prevArrayLength = imageData.length;
+       prevArrayLength = imageData[0].length;
     
   } else {
     
