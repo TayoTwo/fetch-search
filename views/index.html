@@ -1,93 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Hello!</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"> 
-    
-  </head>  
-  <body>
-    
-    <header class="header">
-      
-      <div class="header__inner-container">
-        
-        <div class="header__inner">
-        
-          <div class="header__home-btn">
 
-            <label for="home-btn" class="header__btn-label">
-                <input type="button" name="home-btn" class="header__btn" role="button" value="Home" onclick="window.location.reload();">
-            </label>
+<head>
+  <title>Hello!</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-          </div>
-          
-          <div class="header__searchbox">
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 
-            <form action="/" method="get" class="header__search-form" role="search">
+</head>
 
-              <label for="search-input" class="header__label"></label> 
-              <input id="header__search-input" type="text" name="q" class="header__input" placeholder="Search for an author" role="searchbox" onkeyup="onKeyUp(event)">
-              
+<body>
 
-              <div class="search__submit sr-only">
-                <button type="submit" class="search__submit-btn" tabindex="-1">Search</button>
-              </div>
+  <header class="header">
 
-            </form>
+    <div class="header__inner-container">
 
-          </div>
-        
-          <div class="header__photo-count">
-              <strong id="photo-count" style="display:inline-block">0</strong><p class="header__photo-count-text">PHOTOS</p>
+      <div class="header__inner">
+
+        <div class="header__home-btn">
+
+          <label for="home-btn" class="header__btn-label">
+            <input type="button" name="home-btn" class="header__btn" role="button" value="Home" onclick="reset()">
+          </label>
+
+        </div>
+
+        <div class="header__searchbox">
+
+          <form action="/" method="get" class="header__search-form" role="search">
+
+            <label for="search-input" class="header__label"></label>
+            <input id="header__search-input" type="text" name="q" class="header__input" placeholder="Search for an author" role="searchbox" onkeyup="onKeyUp(event)">
+
+
+            <div class="search__submit sr-only">
+              <button type="submit" class="search__submit-btn" tabindex="-1">Search</button>
             </div>
-                    
-        </div>
-        
-        <hr id="header__bar" style="display: none"> 
-                  
-      </div>
-      
-    </header>
-    
 
-    <main class="main">
-      
-      <div class="main__container">
-            
-        <ul class="main__list" id="main__list">
-              
-        </ul>
-        
-      </div>
-      
-    </main>
-     <footer class="footer">
-      
-      <div class="footer__inner-container">
-        
-        <div class="footer__inner">
-          
-          <div class="footer__credit">
-            <p>Made by Eyitayo Adedeji</p>
-          </div>
-          
-          <div class="footer__link">
-            <a href="https://et127.github.io" target="_blank"><p>Click Me!</p></a>
-          </div>
-          
+          </form>
+
         </div>
-        
+
+        <div class="header__photo-count">
+          <strong id="photo-count" style="display:inline-block">0</strong>
+          <p class="header__photo-count-text">PHOTOS</p>
+        </div>
+
       </div>
-       
-    </footer>
-    
-    <!-- import the webpage's javascript file -->
-    <script src="./script.js" defer></script>
-  </body>
+
+      <hr id="header__bar" style="display: none">
+
+    </div>
+
+  </header>
+
+
+  <main class="main">
+
+    <div class="main__container">
+
+      <ul class="main__list" id="main__list">
+
+      </ul>
+
+    </div>
+
+  </main>
+  <footer class="footer">
+
+    <div class="footer__inner-container">
+
+      <div class="footer__inner">
+
+        <div class="footer__credit">
+          <p>Made by Eyitayo Adedeji</p>
+        </div>
+
+        <div class="footer__link">
+          <a href="https://et127.github.io" target="_blank">
+            <p>Click Me!</p>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- import the webpage's javascript file -->
+  <script src="./script.js" defer></script>
+</body>
+
 </html>
