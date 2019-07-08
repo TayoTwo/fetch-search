@@ -172,36 +172,40 @@ function sort(text){
 
 function onSelectImg(e){
   
-  var rawImg = '';
-    
-  for(var i = 0; i < imageData[0].length;i++){
-    
-    var x = imageData[0][i];
-    
-    if(x[0][0] != e.target.src){
-      
-      ulist.getElementsByTagName('li')[i].style.display = "none";
-      
+  if(!imageInFocus){
+  
+    var rawImg = '';
+
+    for(var i = 0; i < imageData[0].length;i++){
+
+      var x = imageData[0][i];
+
+      if(x[0][0] != e.target.src){
+
+        ulist.getElementsByTagName('li')[i].style.display = "none";
+
+      }
+
     }
+
+     e.target.onload = function(){         
+
+        var aspectRatio = (e.target.naturalHeight/e.target.naturalWidth) * 100;
+        aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
+
+        e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
+        console.log(aspectRatio);
+        console.log(e.target.parentNode);
+        e.target.parentNode.setAttribute("style", aspectRatio);
+
+      };
+
+    e.target.src = e.target.name;
+    console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
+
+    imageInFocus = true;
     
   }
-  
-   e.target.onload = function(){         
-  
-      var aspectRatio = (e.target.naturalHeight/e.target.naturalWidth) * 100;
-      aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
-
-      e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
-      console.log(aspectRatio);
-      console.log(e.target.parentNode);
-      e.target.parentNode.setAttribute("style", aspectRatio);
-     
-    };
-    
-  e.target.src = e.target.name;
-  console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
-
-  imageInFocus = true;
 }
 
 function onClick(e) {
