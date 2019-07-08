@@ -170,22 +170,21 @@ function onSelectImg(e){
     
     if(x[0][0] == e.target.src){
        
-    console.log(item[1]);
-     rawImg = item[1];
+      console.log(x[1]);
+      rawImg = x[1];
     
+    } else {
+      
+      ulist.getElementsByTagName('li')[i].style.display = "none";
+      
     }
     
   }
   
-    e.target.src = ;
+  e.target.src = rawImg;
+  
+  e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
   console.log(e.target.src);
-  
-}
-
-async function fetchImage(id){
-  
-  const image = await fetch();
-  
   
 }
 
