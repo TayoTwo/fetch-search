@@ -152,22 +152,17 @@ function sort(text){
         .split(/[^a-z -+[0-9]]/ig)
         .some(w => regex.test(w)) ? "" : "none";
       
-      if(item.style.display = ""){
-         
-        console.log(listItems.indexOf(item));
-         item.getElementsByTagName('img')[0].src = imageData[1][listItems.indexOf(item)];
-         
-      }
+
 
     });
   
 }
 
-function onSelect(id){
+function onSelectImg(id){
 
   var rawImg = imageData[0][id][1];  
   
-  document.getElementsByTagName('img')[id] = rawImg;
+  document.getElementsByTagName('img')[0] = rawImg;
   
 }
 
@@ -182,7 +177,16 @@ function onClick(e) {
   
   e.preventDefault();
   
-  sort(e.target.parentNode.lastChild.innerText);
+  if(event.target.tagName.toLowerCase() === 'span'){
+  
+   sort(e.target.innerText);
+  
+  } else {
+    
+    // onSelectImg(id);
+          
+    
+  }
 
 }
 
