@@ -15,7 +15,6 @@ async function start(){
   
  imageData.push(await fetchData());
   imageData = [...imageData];
-  console.log(imageData[0]);
   // prevArray = imageData[0];
 }
 
@@ -27,7 +26,6 @@ async function scroll(){
                            document.documentElement.scrollHeight, 
                            document.documentElement.offsetHeight );
   
-  // console.log(loadingPages);
   
   if(window.scrollY < 0.5){
      
@@ -35,15 +33,11 @@ async function scroll(){
      
   } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= (limit * 0.75) && !loadingPages && !imageInFocus) {
             
-      // console.log("Loading more photos");
     
       loadingPages = true;
       imageData[0] = imageData[0].concat(await fetchData());
-    
-      console.log(imageData[0]);
-      console.log(prevArray);
+
       (imageData[0].length == prevArray.length) ? (hitPageLimit = true) : (hitPageLimit = false);
-      // console.log(hitPageLimit);
       limit = document.body.offsetHeight - window.innerHeight;
       limit = Math.max( document.body.scrollHeight, 
                            document.body.offsetHeight, 
@@ -171,9 +165,7 @@ function sort(text){
 }
 
 function onSelectImg(e){
-  
-  if(!imageInFocus){
-  
+
     var rawImg = '';
 
     for(var i = 0; i < imageData[0].length;i++){
@@ -200,11 +192,8 @@ function onSelectImg(e){
       };
     // console.log(e.target.onload);
     e.target.src = e.target.name;
-    console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
-    imageInFocus = true;
-    
-  }
-  
+    // console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
+
 }
 
 function onClick(e) {
@@ -212,22 +201,24 @@ function onClick(e) {
   e.preventDefault();
   
   console.log(e.target);
-  if(event.target.tagName.toLowerCase() === 'img'){
+  if(event.target.tagName.toLowerCase() === 'img' && !imageInFocus){
     
     // console.log("Image selected");
     onSelectImg(e);    
-  
-  } else {
+    imageInFocus = true;
     
-    // e.target.onload = function(){};
+  
+  } else if(event.target.tagName.toLowerCase() != 'img'){
+    
+    e.target.onload = function(){};
     
     // console.log(e.target.onload);
     
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
     
-    e.target.parentNode.parentNode.setAttribute("style","");
-    e.target.parentNode.setAttribute("style","");
+    e.target.parentNode.parentNode.setAttribute("style", "margin:0x; width:0x;");
+    e.target.parentNode.setAttribute("style", "0x");
     sort(e.target.innerText);
     imageInFocus = false;
     
