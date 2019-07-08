@@ -158,11 +158,24 @@ function sort(text){
   
 }
 
-function onSelectImg(id){
+function onSelectImg(e){
+  
+  console.log(e.target);
+  
+  var id = imageData[0].forEach(item => {
+    
+    if(item[0] = e.target.src){
+       
+     imageData[0][i][0].indexOf(e.target);
+    
+    }
+    
+  });
+  console.log(id);
 
   var rawImg = imageData[0][id][1];  
   
-  document.getElementsByTagName('img')[0] = rawImg;
+  e.target.src = rawImg;
   
 }
 
@@ -183,7 +196,7 @@ function onClick(e) {
   
   } else {
     
-    // onSelectImg(id);
+    onSelectImg(e);
           
     
   }
