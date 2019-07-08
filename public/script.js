@@ -8,6 +8,8 @@ var prevArray = [];
 var imageInFocus = false;
 var currentImage = "";
 var scrollPos = 0;
+var count = 0;
+var maxNumPages = 96;
 // input.focus();
 
 start();
@@ -63,7 +65,7 @@ setInterval(function() {
   var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
   var intElemScrollTop = document.body.scrollTop;
 
-  var count = 0;
+  count = 0;
 
   for (var i = 0; i < arr.length; i++) {
 
@@ -83,7 +85,7 @@ setInterval(function() {
 async function fetchData() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=' + pagecount + '&limit=96')
+    fetch('https://picsum.photos/v2/list?page=' + pagecount + '&limit=' + maxNumPages)
     .then(response => response.json())
     .then(data => data.map(function(photo) {
       let {
@@ -180,7 +182,12 @@ function onSelectImg(e) {
 
   var rawImg = '';
   const imageEl = e.target;
-  scrollPos = window.scrollY;
+
+  if (count >= maxNumPages) {
+
+    scrollPos = window.scrollY;
+
+  }
 
   for (var i = 0; i < imageData[0].length; i++) {
 
