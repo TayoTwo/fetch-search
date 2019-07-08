@@ -1,0 +1,23 @@
+{
+  "name": "fetch-search",
+  "version": "1.0.0",
+  "description": "Welcome to Glitch =================",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ET127/fetch-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ET127/fetch-search/issues"
+  },
+  "homepage": "https://github.com/ET127/fetch-search#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node": "^12.6.0"
+  }
+}
