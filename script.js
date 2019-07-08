@@ -187,7 +187,12 @@ function onSelectImg(e){
   
   e.target.src = e.target.name;
   
+  var aspectRatio = (e.target.height/e.target.width) * 100;
+  aspectRatio = ("padding-top:" + aspectRatio).toString();
+  
   e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
+  console.log(aspectRatio);
+  e.target.parentNode.setAttribute("style", aspectRatio);
   
 }
 
