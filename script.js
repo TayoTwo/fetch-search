@@ -89,7 +89,6 @@ async function fetchData() {
 
         var nurl = shrinkImg(url);
         
-        // console.log({nurl, author});
         loadPhoto({nurl, author,url});
 
         return([[nurl,photo.author],url]);
@@ -101,7 +100,6 @@ async function fetchData() {
     pagecount++;
     loadingPages = false;
   
-    // console.log(data);
     return data;
   
 }
@@ -133,7 +131,7 @@ function loadPhoto({nurl, author,url} = {}){
     f.href =  "#";
     f.addEventListener("click", onClick, false);
     i.src = nurl;
-    i.name = url;
+    i.dataset.originalSrc = url;
     
     i.className = "item-img";
     c.innerText = author;
@@ -147,7 +145,6 @@ function loadPhoto({nurl, author,url} = {}){
 
 function sort(text){
   
-  // console.log(text);
   input.value = text;
   const regex = RegExp(`^${text}`, 'i');
   
@@ -186,13 +183,12 @@ function onSelectImg(e){
         aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
 
         e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
-        console.log(e.target.parentNode);
         e.target.parentNode.setAttribute("style", aspectRatio);
+        console.log(e.target.parentNode);
+       
 
       };
-    // console.log(e.target.onload);
-    e.target.src = e.target.name;
-    // console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
+    e.target.src = e.target.dataset.originalSrc;
 
 }
 
@@ -203,7 +199,6 @@ function onClick(e) {
   console.log(e.target);
   if(event.target.tagName.toLowerCase() === 'img' && !imageInFocus){
     
-    // console.log("Image selected");
     onSelectImg(e);    
     imageInFocus = true;
     
@@ -212,13 +207,12 @@ function onClick(e) {
     
     e.target.onload = function(){};
     
-    // console.log(e.target.onload);
     
     var img = e.target.parentNode.firstChild;
-    img.src = shrinkImg(img.name);
+    img.src = shrinkImg(img.dataset.originalSrc);
     
-    e.target.parentNode.parentNode.setAttribute("style", "margin:0x; width:0x;");
-    e.target.parentNode.setAttribute("style", "0x");
+    e.target.parentNode.parentNode.setAttribute("style", "");
+    e.target.parentNode.setAttribute("style", "");
     sort(e.target.innerText);
     imageInFocus = false;
     
