@@ -217,7 +217,8 @@ function onClick(e) {
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
     
-    e.target.parentNode.parentNode.getAttribute("style");
+    e.target.parentNode.parentNode.setAttribute("style", 
+                                                "margin: 0.15rem; width: calc((100% - 1.2rem) / 6;");
     e.target.parentNode.parentNode.removeAttribute("style");
     e.target.parentNode.getAttribute("style");
     e.target.parentNode.removeAttribute("style");
