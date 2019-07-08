@@ -185,12 +185,20 @@ function onSelectImg(e){
     
   }
   
+
+  var width = 0;
+  var height = 0;
+    
+  e.target.onload = function(){
+        width = this.width;
+        height = this.height;
+ };
+  
+  console.log(width + " " + height);
+    
   e.target.src = e.target.name;
-  
-  var width;
-  var height;
-  
-  var aspectRatio = (e.target.height/e.target.width) * 100;
+
+  var aspectRatio = (height/width) * 100;
   aspectRatio = ("padding-top:" + aspectRatio).toString();
   
   e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
