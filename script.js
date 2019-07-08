@@ -197,8 +197,10 @@ function onClick(e) {
   
   if(event.target.tagName.toLowerCase() === 'span'){
     
-    e.target.src = shrinkImg(e.target.src);
-   sort(e.target.innerText);
+    var img = e.target.parentNode.firstChild;
+    img.src = shrinkImg(img.name);
+    img.parentNode.parentNode.setAttribute("style", "");
+    sort(e.target.innerText);
   
   } else {
     
