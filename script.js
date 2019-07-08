@@ -160,22 +160,25 @@ function sort(text){
 
 function onSelectImg(e){
   
-  console.log(e.target);
+  console.log(e.target.src);
   
-  var id = imageData[0].forEach(item => {
+  var rawImg = '';
     
-    if(item[0] = e.target.src){
+  for(var i = 0; i < imageData[0].length;i++){
+    
+    var x = imageData[0][i];
+    
+    if(x[0][0] == e.target.src){
        
-     imageData[0][i][0].indexOf(e.target);
+    console.log(item[1]);
+     rawImg = item[1];
     
     }
     
-  });
-  console.log(id);
-
-  var rawImg = imageData[0][id][1];  
+  }
   
-  e.target.src = rawImg;
+    e.target.src = ;
+  console.log(e.target.src);
   
 }
 
