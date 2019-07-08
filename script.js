@@ -92,17 +92,9 @@ async function fetchData() {
       .then(data => data.map(function(photo){
         let {author, download_url: url} = photo;
 
-        var nurl = url.replace(/(\/+)$/, '')
-          .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
-            const $max = Math.max($width, $height);
-            const max = Math.min($max, 512);
-
-            [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
-
-            return `${$width}/${$height}`;
-          });
+        
         // console.log({nurl, author});
-        loadPhoto({nurl, author});
+        loadPhoto({nurl, author,url});
 
         return([[nurl,photo.author],url]);
 
@@ -118,7 +110,23 @@ async function fetchData() {
   
 }
 
-function loadPhoto({nurl, author} = {}){
+function shrinkImg(url){
+  
+  var nurl = url.replace(/(\/+)$/, '')
+          .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
+            const $max = Math.max($width, $height);
+            const max = Math.min($max, 512);
+
+            [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
+
+            return `${$width}/${$height}`;
+          });
+  
+  return nurl;
+  
+}
+
+function loadPhoto({nurl, author,url} = {}){
 
     var node = document.createElement("li");
     var f = document.createElement('figure');
@@ -129,6 +137,8 @@ function loadPhoto({nurl, author} = {}){
     f.href =  "#";
     f.addEventListener("click", onClick, false);
     i.src = nurl;
+    i.name = url;
+    
     i.className = "item-img";
     c.innerText = author;
   
@@ -194,6 +204,12 @@ function onClick(e) {
   
   if(event.target.tagName.toLowerCase() === 'span'){
   
+    imageData[0].forEach(
+    
+      
+      
+        
+    );
    sort(e.target.innerText);
   
   } else {
