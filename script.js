@@ -187,6 +187,9 @@ function onSelectImg(e){
   
   e.target.src = e.target.name;
   
+  var width;
+  var height;
+  
   var aspectRatio = (e.target.height/e.target.width) * 100;
   aspectRatio = ("padding-top:" + aspectRatio).toString();
   
