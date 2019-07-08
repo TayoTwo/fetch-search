@@ -168,7 +168,7 @@ function onSelectImg(e){
     
     var x = imageData[0][i];
     
-    if(x[0][0] == e.target.src){
+    if(x[0][0] == e.target.src || x[1] == e.target.src){
        
       console.log(x[1]);
       rawImg = x[1];
@@ -198,8 +198,7 @@ function onClick(e) {
   
   } else {
     
-    onSelectImg(e);
-          
+    onSelectImg(e);    
     
   }
 
