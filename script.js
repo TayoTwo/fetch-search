@@ -208,18 +208,20 @@ function onClick(e) {
   
   e.preventDefault();
   
-  if(event.target.tagName.toLowerCase() === 'span'){
+  if(event.target.tagName.toLowerCase() === 'img'){
+    
+    onSelectImg(e);    
+  
+  } else {
     
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
     
-    e.target.parentNode.parentNode.setAttribute("style", "");
-    e.target.parentNode.style = "";
+    e.target.parentNode.parentNode.getAttribute("style");
+    e.target.parentNode.parentNode.removeAttribute("style");
+    e.target.parentNode.getAttribute("style");
+    e.target.parentNode.removeAttribute("style");
     sort(e.target.innerText);
-  
-  } else {
-    
-    onSelectImg(e);    
     
   }
 
