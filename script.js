@@ -188,11 +188,12 @@ function onSelectImg(e){
    e.target.onload = function(){         
   
       var aspectRatio = (e.target.naturalHeight/e.target.naturalWidth) * 100;
-      aspectRatio = ("padding-top:" + aspectRatio).toString();
+      aspectRatio = Math.round(aspectRatio) + "0 0 0";
 
       e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
       console.log(aspectRatio);
-      e.target.parentNode.getElementsByTag('figure')[0].setAttribute("style", aspectRatio);
+      console.log(e.target.parentNode);
+      e.target.parentNode.padding = aspectRatio; 
      
     };
     
@@ -211,7 +212,7 @@ function onClick(e) {
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
     img.parentNode.parentNode.setAttribute("style", "");
-    e.target.parentNode.getElementsByTag('figure')[0].setAttribute("style", "");
+    e.target.parentNode.setAttribute("style", "");
     sort(e.target.innerText);
   
   } else {
