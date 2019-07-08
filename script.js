@@ -92,6 +92,7 @@ async function fetchData() {
       .then(data => data.map(function(photo){
         let {author, download_url: url} = photo;
 
+        var nurl = shrinkImg(url);
         
         // console.log({nurl, author});
         loadPhoto({nurl, author,url});
@@ -170,20 +171,13 @@ function sort(text){
 
 function onSelectImg(e){
   
-  console.log(e.target.src);
-  
   var rawImg = '';
     
   for(var i = 0; i < imageData[0].length;i++){
     
     var x = imageData[0][i];
     
-    if(x[0][0] == e.target.src || x[1] == e.target.src){
-       
-      console.log(x[1]);
-      rawImg = x[1];
-    
-    } else {
+    if(x[0][0] != e.target.src){
       
       ulist.getElementsByTagName('li')[i].style.display = "none";
       
@@ -191,10 +185,9 @@ function onSelectImg(e){
     
   }
   
-  e.target.src = rawImg;
+  e.target.src = e.target.name;
   
   e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
-  console.log(e.target.src);
   
 }
 
@@ -203,13 +196,8 @@ function onClick(e) {
   e.preventDefault();
   
   if(event.target.tagName.toLowerCase() === 'span'){
-  
-    imageData[0].forEach(
     
-      
-      
-        
-    );
+    e.target.src = shrinkImg(e.target.src);
    sort(e.target.innerText);
   
   } else {
