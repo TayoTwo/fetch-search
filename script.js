@@ -164,6 +164,7 @@ function sort(text){
 function onSelectImg(e){
 
     var rawImg = '';
+    const imageEl = e.target;
 
     for(var i = 0; i < imageData[0].length;i++){
 
@@ -177,18 +178,18 @@ function onSelectImg(e){
 
     }
 
-     e.target.onload = function(){         
+     imageEl.addEventListener('load', function expandImage(){         
 
-        var aspectRatio = (e.target.naturalHeight/e.target.naturalWidth) * 100;
+        var aspectRatio = (imageEl.naturalHeight/imageEl.naturalWidth) * 100;
         aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
 
-        e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
-        e.target.parentNode.setAttribute("style", aspectRatio);
-        console.log(e.target.parentNode);
+        imageEl.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
+        imageEl.parentNode.setAttribute("style", aspectRatio);
+        // console.log(imageEl.parentNode);
        
-
-      };
-    e.target.src = e.target.dataset.originalSrc;
+        imageEl.removeEventListener('load', expandImage);
+      }, false);
+    imageEl.src = imageEl.dataset.originalSrc;
 
 }
 
@@ -204,9 +205,6 @@ function onClick(e) {
     
   
   } else if(event.target.tagName.toLowerCase() != 'img'){
-    
-    e.target.onload = function(){};
-    
     
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.dataset.originalSrc);
