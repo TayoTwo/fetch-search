@@ -5,6 +5,7 @@ var imageData = [];
 var hitPageLimit = false;
 var loadingPages = false;
 var prevArray = [];
+var imageInFocus = false;
 
 // input.focus();
 
@@ -32,7 +33,7 @@ async function scroll(){
      
      document.getElementById("header__bar").style.display = "none";
      
-  } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= (limit * 0.75) && !loadingPages) {
+  } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= (limit * 0.75) && !loadingPages && !imageInFocus) {
             
       console.log("Loading more photos");
     
@@ -188,19 +189,19 @@ function onSelectImg(e){
    e.target.onload = function(){         
   
       var aspectRatio = (e.target.naturalHeight/e.target.naturalWidth) * 100;
-      aspectRatio = Math.round(aspectRatio) + "0 0 0";
+      aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
 
       e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
       console.log(aspectRatio);
       console.log(e.target.parentNode);
-      e.target.parentNode.padding = aspectRatio; 
+      e.target.parentNode.setAttribute("style", aspectRatio);
      
     };
     
   e.target.src = e.target.name;
   console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
 
-  
+  imageInFocus = true;
 }
 
 function onClick(e) {
@@ -211,8 +212,9 @@ function onClick(e) {
     
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
-    img.parentNode.parentNode.setAttribute("style", "");
-    e.target.parentNode.setAttribute("style", "");
+    
+    e.target.parentNode.parentNode.setAttribute("style", "");
+    e.target.parentNode.style = "";
     sort(e.target.innerText);
   
   } else {
