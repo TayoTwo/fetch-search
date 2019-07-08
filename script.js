@@ -35,7 +35,7 @@ async function scroll(){
      
   } else if (!hitPageLimit && (window.innerHeight + window.scrollY) >= (limit * 0.75) && !loadingPages && !imageInFocus) {
             
-      console.log("Loading more photos");
+      // console.log("Loading more photos");
     
       loadingPages = true;
       imageData[0] = imageData[0].concat(await fetchData());
@@ -194,38 +194,40 @@ function onSelectImg(e){
         aspectRatio = ("padding-top:" + Math.round(aspectRatio) + "%").toString();
 
         e.target.parentNode.parentNode.setAttribute("style", "margin: 0.15rem; width: calc(100% - 1.2rem);");
-        console.log(aspectRatio);
         console.log(e.target.parentNode);
         e.target.parentNode.setAttribute("style", aspectRatio);
 
       };
-
+    // console.log(e.target.onload);
     e.target.src = e.target.name;
     console.log(e.target.naturalHeight+ " " + e.target.naturalWidth);
-
     imageInFocus = true;
     
   }
+  
 }
 
 function onClick(e) {
   
   e.preventDefault();
   
+  console.log(e.target);
   if(event.target.tagName.toLowerCase() === 'img'){
     
-    console.log("Image selected");
+    // console.log("Image selected");
     onSelectImg(e);    
   
   } else {
     
+    // e.target.onload = function(){};
+    
+    // console.log(e.target.onload);
+    
     var img = e.target.parentNode.firstChild;
     img.src = shrinkImg(img.name);
     
-    e.target.parentNode.parentNode.getAttribute("style");
-    e.target.parentNode.parentNode.removeAttribute("style");
-    e.target.parentNode.getAttribute("style");
-    e.target.parentNode.removeAttribute("style");
+    e.target.parentNode.parentNode.setAttribute("style","");
+    e.target.parentNode.setAttribute("style","");
     sort(e.target.innerText);
     imageInFocus = false;
     
