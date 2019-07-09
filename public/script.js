@@ -88,22 +88,12 @@ async function fetchData() {
     fetch('https://picsum.photos/v2/list?page=' + pagecount + '&limit=' + maxNumPages)
     .then(response => response.json())
     .then(data => data.map(function(photo) {
-      let {
-        author,
-        download_url: url
-      } = photo;
-
+      let {author,download_url: url} = photo;
       var nurl = shrinkImg(url);
 
-      loadPhoto({
-        nurl,
-        author,
-        url
-      });
+      loadPhoto({nurl,author,url});
 
-      return ([
-        [nurl, photo.author], url
-      ]);
+      return ([[nurl, photo.author], url]);
 
     }))
 
