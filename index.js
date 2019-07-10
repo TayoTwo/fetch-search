@@ -9,15 +9,35 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(req, res) {
-  response.sendFile(__dirname + '/views/index.html');
+
+  res.sendFile(__dirname + '/views/index.html');
+  
 });
 
 app.get('/api/photos/:page/json', async function(req, res) {
 
-  console.log("Received");
-  // res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
+  console.log(`Requesting page ${req.params.page}`);
 
-  res.send(await fetchData(req.params.page));
+  var data = await fetchData(req.params.page);
+  res.send(data);
+//
+});
+
+app.get('/api/photos/:page/:id/json', async function(req, res) {
+
+  console.log(`Requesting json of photo #${req.params.id} on page ${req.params.page}`);
+
+  var data = await fetchData(req.params.page);
+  res.send([...data][req.params.id]);
+
+});
+
+app.get('/api/photos/:page/:id', async function(req, res) {
+
+  console.log(`Requesting photo #${req.params.id} on page ${req.params.page}`);
+
+  var data = await fetchData(req.params.page);
+  res.send(`<img src="${[...data][req.params.id].download_url}"></img>`);
 
 });
 
@@ -25,24 +45,10 @@ async function fetchData(req){
 
   const data = await fetch(`https://picsum.photos/v2/list?page=${req}&limit=96`)
   .then(res => res.json());
-  console.log(data);
 
   return data;
 
 }
-
-
-// app.get('/api/photos/:page', function(req, res) {
-//
-//   res.send("Page: " + req.params.page);
-//
-// });
-
-app.get('/api/photos/:page/:id', function(req, res) {
-
-  res.send(req.params);
-
-});
 
 // listen for requests :)
 var listener = app.listen((process.env.PORT || 3000), function() {

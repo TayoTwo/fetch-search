@@ -85,7 +85,7 @@ setInterval(function() {
 async function fetchData() {
 
   const data = await (
-    fetch('https://picsum.photos/v2/list?page=' + pagecount + '&limit=' + maxNumPages)
+    fetch(`/api/photos/${pagecount}/json`)
     .then(response => response.json())
     .then(data => data.map(function(photo) {
       let {author,download_url: url} = photo;
