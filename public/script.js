@@ -85,7 +85,7 @@ setInterval(function() {
 async function fetchData() {
 
   const data = await (
-    fetch(`/api/photos/${pagecount}/json`)
+    fetch(`/api/photos?page=${pagecount}`)
     .then(response => response.json())
     .then(data => data.map(function(photo) {
       let {author,download_url: url} = photo;
