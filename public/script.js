@@ -1,6 +1,6 @@
 const ulist = document.getElementById('main__list');
 var input = document.getElementById("header__search-input");
-var pagecount = 1;
+let pagecount = 1;
 var imageData = [];
 var hitPageLimit = false;
 var loadingPages = false;
@@ -10,7 +10,6 @@ var currentImage = "";
 var scrollPos = 0;
 var count = 0;
 var maxNumPages = 96;
-// input.focus();
 
 start();
 
@@ -18,8 +17,129 @@ async function start() {
 
   imageData.push(await fetchData());
   imageData = [...imageData];
-  // prevArray = imageData[0];
+
 }
+
+async function fetchData() {
+
+  const data = await (
+    fetch(`/api/photos?page=${pagecount}`)
+    .then(response => response.json())
+    .then(data => data.map(function(photo) {
+      let {author,download_url: url} = photo;
+      var nurl = shrinkImg(url);
+      var id = data.indexOf(photo);
+      loadPhoto({nurl,author,url,id});
+
+      return ([[nurl, photo.author], url]);
+
+    }))
+
+  );
+
+  pagecount++;
+  loadingPages = false;
+
+  return data;
+
+  //Stream all the photos from the custom API (slow AF)
+  /*const data = await (
+    fetch(`/api/photos?page=${pagecount}`)
+    .then(response => response.json())
+    .then(data => data.map(function(photo) {
+      let {author, download_url} = photo;
+      var url = `/api/photos?page=${pagecount}&index=${data.indexOf(photo)}`;
+
+      var nurl = shrinkImg(url);
+
+      loadPhoto({nurl,author,url});
+
+      return ([[nurl, photo.author], url]);
+
+    }))
+
+  );
+
+  pagecount++;
+  loadingPages = false;
+
+  return data;*/
+
+}
+
+function loadPhoto({nurl,author,url,id} = {}) {
+
+  var node = document.createElement("li");
+  var f = document.createElement('figure');
+  var i = document.createElement("img");
+  var c = document.createElement("span");
+  node.className += "main__list-item";
+
+  f.href = "#";
+  f.addEventListener("click", onClick, false);
+  i.src = nurl;
+  i.dataset.originalSrc = `/api/photos?page${pagecount}&index=${id}`;
+
+  i.className = "item-img";
+  c.innerText = author;
+
+  f.appendChild(i);
+  f.appendChild(c);
+  node.appendChild(f);
+  document.getElementById("main__list").appendChild(node);
+
+}
+
+function sort(text) {
+
+  input.value = text;
+  const regex = RegExp(`^${text}`, 'i');
+
+  const listItems = [...ulist.getElementsByTagName('li')]
+    .forEach(item => {
+      item.style.display = `${item.innerText}`
+        .split(/[^a-z -+[0-9]]/ig)
+        .some(w => regex.test(w)) ? "" : "none";
+    });
+
+}
+
+setInterval(function() {
+
+  var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
+  var intElemScrollTop = document.body.scrollTop;
+
+  count = 0;
+
+  for (var i = 0; i < arr.length; i++) {
+
+    if (arr[i].style.display != "none") {
+      count++;
+    }
+
+  }
+
+  document.getElementById("photo-count").innerText = count;
+
+}, 1000);
+
+function shrinkImg(url) {
+
+  var nurl = url.replace(/(\/+)$/, '')
+    .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
+      const $max = Math.max($width, $height);
+      const max = Math.min($max, 512);
+
+      [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
+
+      return `${$width}/${$height}`;
+    });
+
+  return nurl;
+
+}
+
+window.addEventListener("scroll", scroll, 1000);
 
 async function scroll() {
 
@@ -58,122 +178,11 @@ async function scroll() {
 
 }
 
-window.addEventListener("scroll", scroll, 1000);
-
-setInterval(function() {
-
-  var arr = Array.prototype.slice.call(ulist.getElementsByTagName('li'));
-  var intElemScrollTop = document.body.scrollTop;
-
-  count = 0;
-
-  for (var i = 0; i < arr.length; i++) {
-
-    if (arr[i].style.display != "none") {
-
-      count++;
-
-    }
-
-  }
-
-  document.getElementById("photo-count").innerText = count;
-
-}, 1000);
-
-
-async function fetchData() {
-
-  const data = await (
-    fetch(`/api/photos?page=${pagecount}`)
-    .then(response => response.json())
-    .then(data => data.map(function(photo) {
-      let {author,download_url: url} = photo;
-      var nurl = shrinkImg(url);
-
-      loadPhoto({nurl,author,url});
-
-      return ([[nurl, photo.author], url]);
-
-    }))
-
-  );
-
-  pagecount++;
-  loadingPages = false;
-
-  return data;
-
-}
-
-function shrinkImg(url) {
-
-  var nurl = url.replace(/(\/+)$/, '')
-    .replace(/(\d+)\/(\d+)$/, (match, $width, $height) => {
-      const $max = Math.max($width, $height);
-      const max = Math.min($max, 512);
-
-      [$width, $height] = [$width, $height].map(dim => Math.round((dim / $max) * max));
-
-      return `${$width}/${$height}`;
-    });
-
-  return nurl;
-
-}
-
-function loadPhoto({
-  nurl,
-  author,
-  url
-} = {}) {
-
-  var node = document.createElement("li");
-  var f = document.createElement('figure');
-  var i = document.createElement("img");
-  var c = document.createElement("span");
-  node.className += "main__list-item";
-
-  f.href = "#";
-  f.addEventListener("click", onClick, false);
-  i.src = nurl;
-  i.dataset.originalSrc = url;
-  // i.id = url;
-
-  i.className = "item-img";
-  c.innerText = author;
-
-  f.appendChild(i);
-  f.appendChild(c);
-  node.appendChild(f);
-  document.getElementById("main__list").appendChild(node);
-
-}
-
-function sort(text) {
-
-  input.value = text;
-  const regex = RegExp(`^${text}`, 'i');
-
-  const listItems = [...ulist.getElementsByTagName('li')]
-    .forEach(item => {
-
-      item.style.display = `${item.innerText}`
-        .split(/[^a-z -+[0-9]]/ig)
-        .some(w => regex.test(w)) ? "" : "none";
-
-
-
-    });
-
-}
-
 function onSelectImg(e) {
 
-  var rawImg = '';
   const imageEl = e.target;
 
-  if (count >= maxNumPages) {
+  if(count >= maxNumPages){
 
     scrollPos = window.scrollY;
 
@@ -229,6 +238,11 @@ function onClick(e) {
 
 }
 
+function onKeyUp(e) {
+  e.preventDefault();
+  sort(e.target.value);
+}
+
 function reset() {
 
   [...ulist.getElementsByTagName("li")].forEach(item => {
@@ -241,13 +255,5 @@ function reset() {
   sort("");
   window.scrollTo(0, scrollPos);
   imageInFocus = false;
-
-}
-
-function onKeyUp(e) {
-
-  e.preventDefault();
-
-  sort(e.target.value);
 
 }

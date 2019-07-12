@@ -1,8 +1,13 @@
 // init project
 var express = require('express');
 const fetch = require("node-fetch");
-var async  = require('express-async-await');
+var async = require('express-async-await');
+var path = require('path');
+const http = require("http");
+const https = require("https");
+var through = require('through');
 var fs = require('fs');
+var request = require('request');
 var app = express();
 app.use(express.json());
 
@@ -23,45 +28,54 @@ app.get('/api/photos', async function(req, res) {
   var page = req.query.page;
   var index = req.query.index;
   var json = req.query.json;
+  var url = (index != undefined) ? `http://picsum.photos/v2/list?page=${page}&limit=${index+1}`: `http://picsum.photos/v2/list?page=${page}&limit=96`;
+  var data = await fetch(url).then(response => response.json());
+  var thisThrough = through(function write(chunk) {
+      this.emit('data', chunk);
+      console.log(chunk);
+    },
+    function end() { //optional
+      this.emit('end');
+    });
 
-  var data = await fetchData(page);
-  if(page != undefined){
-      if(index != undefined){
+  if (data.length != 0) {
+    if (index < [...data].length && index != undefined) {
+      if (json == undefined || json == "false") {
 
-        if(json == undefined || json == "false"){
+        data = [...data][index].download_url;
+        request(data).pipe(thisThrough).pipe(res);
 
-          data = [...data][index].download_url;
-          res.setHeader("Content-Type", "text/html");
+      } else if (json == "true") {
 
-          res.write('<html><body><img src="')
-          res.write(data);
-          res.end('"/></body></html>');
+        data = [...data][index];
+        console.log(data);
+        res.send(data);
 
-        } else if(json == "true") {
+      } else {
 
-            data = [...data][index];
-
-        }
+        res.status(404).send("Image not found");
 
       }
+
+    } else if(index >= [...data].length){
+
+      res.status(404).send("Image not found");
+
+    } else {
+
+      console.log(data);
+      res.send(data);
+
+    }
+
   } else {
 
     res.status(404).send("Page not found");
 
   }
 
-  res.send(data);
-//
+  //
 });
-
-async function fetchData(req){
-
-  const data = await fetch(`https://picsum.photos/v2/list?page=${req}&limit=96`)
-  .then(res => res.json());
-
-  return data;
-
-}
 
 // listen for requests :)
 var listener = app.listen((process.env.PORT || 3000), function() {
